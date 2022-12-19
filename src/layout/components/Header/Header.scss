@@ -1,0 +1,50 @@
+.header {
+    height: 60px;
+    width: 100%;
+    background-color: #1E1E2E;
+    position: relative;
+
+
+    .language__topbar {
+        position: relative;
+        right: 160px;
+    }
+
+    .topbar__account {
+        position: absolute;
+        right: 65px;
+        display: flex;
+        margin-top: 15px;
+
+        .avatar__user {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .topbat__account-info {
+            margin-left: 10px;
+            margin-top: 5px;
+
+
+            h3 {
+                font-weight: 500;
+                font-size: 14px;
+                color: #F5F5FF;
+                letter-spacing: -0.002em;
+                margin-bottom: 5px;
+                cursor: pointer;
+                text-decoration: none !important;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 12px;
+                color: #B65100;
+                letter-spacing: -0.002em;
+                text-decoration: none !important;
+            }
+        }
+    }
+}
