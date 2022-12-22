@@ -13,3 +13,19 @@ html {}
   max-width: 1920px;
   max-height: 1080px;
 }
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+
+// title every page
+.title__page {
+  font-size: 26px;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: -0.002em;
+  margin-bottom: 16px;
+}
+
+// select

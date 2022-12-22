@@ -1,0 +1,126 @@
+.record__store__page {
+    padding-left: 20px;
+    padding-top: 5px;
+
+    .ant-btn-icon-only {
+        color: #ffff !important;
+        font-size: 18px;
+        padding-right: 14px;
+
+    }
+
+    .ant-input {
+        padding: 12px 14px;
+        height: 34px;
+        border-radius: 4px;
+        background: #2B2B3F;
+        font-weight: 400;
+        font-size: 14px;
+        color: #727288;
+        border-color: #2B2B3F;
+
+        &:hover {
+            border-color: #2B2B3F;
+        }
+
+        &:focus {
+            border-color: #2B2B3F;
+            box-shadow: none;
+        }
+
+
+    }
+
+    input::placeholder {
+        color: #727288;
+    }
+
+
+    .ant-btn {
+        background: #2B2B3F;
+        border-color: transparent;
+        color: #fff;
+        height: 34px;
+
+        &:hover {
+            border-color: transparent;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+
+    }
+
+    .list_actions {
+        display: flex;
+
+        gap: 44px;
+
+        .select_item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .select_name {
+                font-weight: 600;
+                font-size: 11px;
+                color: #FFFFFF;
+                margin-right: 8px;
+            }
+        }
+
+        .ant-tabs-nav {
+            &::before {
+                display: none;
+            }
+        }
+
+        .ant-tabs .ant-tabs-tab {
+            color: #fff;
+            margin-left: 10px;
+
+            &:hover {
+                color: none;
+            }
+        }
+
+        .ant-tabs-ink-bar {
+            width: 0;
+            display: none;
+        }
+
+        .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+
+            color: #FF7506;
+        }
+
+
+
+    }
+
+    .ant-pagination .ant-pagination-item {
+        a {
+            color: #ffff;
+        }
+    }
+
+
+
+    .ant-pagination .ant-pagination-item-active {
+        vertical-align: middle;
+        text-align: center;
+        background: rgba(255, 117, 6, 0.5);
+        width: 18px;
+        height: 30px;
+
+        border-radius: 50%;
+        border-color: rgba(255, 117, 6, 0.5);
+
+        a {
+            color: #ffff;
+        }
+    }
+}

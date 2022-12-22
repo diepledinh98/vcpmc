@@ -7,6 +7,7 @@ import { Button, Col, DatePicker, Form, Input, Row } from 'antd'
 import { FiEdit, FiLock, FiLogOut } from 'react-icons/fi'
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { Link } from 'react-router-dom'
 const UpdateProfile = () => {
     dayjs.extend(customParseFormat);
     const dateFormat = 'DD/MM/YYYY';
@@ -123,9 +124,12 @@ const UpdateProfile = () => {
                             <Row>
                                 <Col>
                                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                                        <Button className='btn__cancel' >
-                                            Hủy
-                                        </Button>
+                                        <Link to='/profile'>
+
+                                            <Button className='btn__cancel' >
+                                                Hủy
+                                            </Button>
+                                        </Link>
                                     </Form.Item>
                                 </Col>
 

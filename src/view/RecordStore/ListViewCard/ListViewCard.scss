@@ -1,0 +1,12 @@
+.list__view__card {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-bottom: 20px;
+
+    .pani {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+}

@@ -1,0 +1,82 @@
+.ant-table {
+
+
+
+
+    table {}
+
+    .list_tag_time {
+        display: flex;
+        text-align: center;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .tag__cicrle {
+        width: 8px;
+        height: 8px;
+        background-color: #347AFF;
+        border-radius: 50%;
+    }
+
+    .ant-table-thead>tr>th {
+        color: #FFAC69;
+        background: #2B2B3F;
+        font-weight: 500;
+        font-size: 12px;
+        border-bottom: none;
+        height: 40px;
+        border-radius: 0px !important;
+        padding: 8px 10px;
+
+    }
+
+    tbody>tr:hover {
+        background-color: transparent !important;
+
+    }
+
+    .ant-table-tbody>tr {
+        background: #2B2B3F;
+        color: #FFFFFF;
+
+    }
+
+    .ant-table-tbody>tr:hover,
+    td {
+        background-color: #2B2B3F !important;
+        border-radius: none !important;
+    }
+}
+
+.ant-table-tbody>tr {
+    border-radius: none !important;
+}
+
+.ant-table-tbody>tr>td {
+    vertical-align: middle;
+    background: #2B2B3F;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 400;
+    border-bottom: 0.01px solid #727288;
+    border-radius: 0px !important;
+    padding: 4px 10px !important;
+    opacity: 0.7;
+
+}
+
+.ant-table-cell-row-hover {
+
+    background: #2B2B3F;
+
+
+}
+
+
+.Table__list {
+    background: #2B2B3F;
+    border-radius: 8px;
+    width: 1120px;
+    padding: 20px;
+}

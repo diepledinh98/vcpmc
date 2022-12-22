@@ -30,4 +30,5 @@ export const privateRoutes: routeType[] = [
 
 export const publicRoutes: routeType[] = [
     { path: '/login', component: <Login /> },
+    { path: '/profile', component: <Profile /> },
 ]
