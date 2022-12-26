@@ -1,22 +1,44 @@
-.ant-table {
+.Table__list {
+    background: #2B2B3F;
+    border-radius: 8px;
+    width: 1120px;
+    padding: 20px;
+
+    .ant-table {
+        table {}
+
+        .list_tag_time {
+            display: flex;
+            text-align: center;
+            gap: 8px;
+            align-items: center;
+            font-size: 12px;
+            margin-right: 6px;
+        }
+
+        .tag__cicrle {
+
+            width: 8px;
+            height: 8px;
+            background-color: #347AFF;
+            border-radius: 50%;
+        }
 
 
-
-
-    table {}
-
-    .list_tag_time {
-        display: flex;
-        text-align: center;
-        gap: 8px;
-        align-items: center;
     }
 
-    .tag__cicrle {
-        width: 8px;
-        height: 8px;
-        background-color: #347AFF;
-        border-radius: 50%;
+    .ant-table-tbody>tr>td {
+        vertical-align: middle;
+        background: #2B2B3F;
+
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 400;
+        border-bottom: 0.01px solid #727288;
+        border-radius: 0px !important;
+        padding: 2px 10px !important;
+        opacity: 0.7;
+
     }
 
     .ant-table-thead>tr>th {
@@ -33,13 +55,11 @@
 
     tbody>tr:hover {
         background-color: transparent !important;
-
     }
 
     .ant-table-tbody>tr {
         background: #2B2B3F;
         color: #FFFFFF;
-
     }
 
     .ant-table-tbody>tr:hover,
@@ -47,36 +67,12 @@
         background-color: #2B2B3F !important;
         border-radius: none !important;
     }
-}
 
-.ant-table-tbody>tr {
-    border-radius: none !important;
-}
+    .ant-table-tbody>tr {
+        border-radius: none !important;
+    }
 
-.ant-table-tbody>tr>td {
-    vertical-align: middle;
-    background: #2B2B3F;
-    color: #FFFFFF;
-    font-size: 13px;
-    font-weight: 400;
-    border-bottom: 0.01px solid #727288;
-    border-radius: 0px !important;
-    padding: 4px 10px !important;
-    opacity: 0.7;
-
-}
-
-.ant-table-cell-row-hover {
-
-    background: #2B2B3F;
-
-
-}
-
-
-.Table__list {
-    background: #2B2B3F;
-    border-radius: 8px;
-    width: 1120px;
-    padding: 20px;
+    .ant-table-cell-row-hover {
+        background: #2B2B3F;
+    }
 }

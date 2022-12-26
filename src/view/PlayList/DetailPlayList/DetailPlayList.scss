@@ -1,0 +1,123 @@
+.detail__playlist__page {
+    padding-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+
+    .ant-breadcrumb {
+
+        .ant-breadcrumb-link,
+        a {
+            color: #F5F5FF;
+            font-size: 13px;
+        }
+
+        .ant-breadcrumb-separator {
+            color: #FFAC69;
+            font-size: 16px;
+        }
+    }
+
+    .content__detail {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+
+        .info__playlist {
+            width: 195px;
+
+
+            .title__info__playlist {
+                border-bottom: 1px solid #727288;
+
+                .img__info__playlist {
+                    width: 195px;
+                    height: 195px;
+                    border-radius: 4px;
+                }
+
+                h3 {
+                    margin: 15px 0px;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #F5F5FF;
+                }
+            }
+
+            .content__info__playlist {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0px;
+                border-bottom: 1px solid #727288;
+                font-size: 11px;
+                font-weight: 600;
+                color: #F5F5FF;
+
+                .info__value {
+                    font-weight: 500;
+                    color: #FFFFFF;
+                    opacity: 0.7;
+                    font-size: 12px;
+                }
+
+            }
+
+            .des__info__playlist {
+                padding: 15px 0px;
+                color: #FFFFFF;
+                border-bottom: 1px solid #727288;
+                line-height: 1.4;
+                font-size: 12px;
+                text-align: justify;
+                opacity: 0.7;
+            }
+
+            .topic__info__playlist {
+                border-bottom: 1px solid #727288;
+                padding: 15px 0px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .list_tag_time {
+                    display: flex;
+                    text-align: center;
+                    gap: 4px;
+                    align-items: center;
+                    color: #F5F5FF;
+                    font-size: 11px;
+
+                }
+
+                .tag__cicrle {
+                    margin-left: 4px;
+                    width: 8px;
+                    height: 8px;
+                    background-color: #347AFF;
+                    border-radius: 50%;
+                }
+            }
+
+            .select__info__playlist {
+
+                padding: 15px 0px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .select__info__playlist-item {
+                    display: flex;
+                    gap: 4px;
+                    cursor: pointer;
+                    color: #F5F5FF;
+                    font-size: 12px;
+
+                    &:hover {
+                        color: #FFAC69;
+                    }
+                }
+            }
+        }
+    }
+}

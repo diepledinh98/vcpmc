@@ -80,7 +80,7 @@ const columns: ColumnsType<DataType> = [
 
     },
     {
-        title: 'Cập nhật',
+        title: '',
         key: 'update',
         dataIndex: 'update',
         render: (action: any) => {
@@ -90,7 +90,7 @@ const columns: ColumnsType<DataType> = [
         }
     },
     {
-        title: 'Nghe',
+        title: '',
         key: 'listen',
         dataIndex: 'listen',
         render: (action: any) => {
@@ -247,6 +247,7 @@ const data: DataType[] = [
     },
 
 ];
+
 const TableComponent = () => {
     return (
         <div className='Table__list'>

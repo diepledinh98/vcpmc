@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { Button, Col, Form, Input, Modal, Row } from 'antd';
+import { Alert, Button, Col, Form, Input, message, Modal, Row } from 'antd';
 import './ModalChangePassword.scss'
 import { getAuth, signInWithEmailAndPassword, updatePassword, updateProfile, User } from "firebase/auth";
 import { auth } from '../../../../configs';
@@ -19,7 +19,7 @@ const ModalChangePassword = (props: OpenProps) => {
         console.log(user);
 
         if (user) {
-            console.log(newPassword);
+
 
             await updatePassword(user, newPassword).then(async () => {
 
@@ -32,6 +32,8 @@ const ModalChangePassword = (props: OpenProps) => {
                     .catch((err) => {
                         // setError('Sai tên đăng nhập hoặc mật khẩu')
                     })
+
+
             }).catch((error) => {
                 console.log("loi");
 
@@ -40,12 +42,7 @@ const ModalChangePassword = (props: OpenProps) => {
             // No user is signed in.
         }
         props.setIsOpen(false)
-        setTimeout(() => {
-            return (
 
-                <h3 style={{ color: 'red' }}>da thay doi mat khau</h3>
-            )
-        }, 800)
     };
 
     const handleCancel = () => {
@@ -97,8 +94,23 @@ const ModalChangePassword = (props: OpenProps) => {
                     <h3>Nhập lại mật khẩu mới:</h3>
                     <Form.Item
 
-                        name="password"
-                        rules={[{ required: true, message: 'Vui lòng nhập lại mật khẩu mới!' }]}
+                        name="again_newpassword"
+                        dependencies={['retype_password']}
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Vui lòng nhập lai mật khẩu mới!'
+                            },
+                            ({ getFieldValue }) => ({
+                                validator(_, passwordConfirm) {
+                                    if (!passwordConfirm || getFieldValue('retype_password') === passwordConfirm) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject(new Error('Mat khau khong trung khop'));
+                                },
+                            }),
+                        ]}
+
                     >
                         <Input.Password />
                     </Form.Item>

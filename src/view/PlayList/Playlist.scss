@@ -1,0 +1,128 @@
+.playlist__page {
+    padding-left: 20px;
+    padding-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+
+    .action__playlist {
+        display: flex;
+
+    }
+
+    .link__add_playlist {
+        .iconadd {
+            text-align: center;
+            font-size: 35px;
+            color: #FF7506;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        cursor: pointer;
+        margin-left: 37px;
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+        width: 76px;
+        height: 90px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        background: #2B2B3F;
+        font-size: 12px;
+        color: #ffffff;
+
+
+    }
+
+    // search 
+    .ant-input {
+        padding: 12px 14px;
+        height: 34px;
+        border-radius: 4px;
+        background: #2B2B3F;
+        font-weight: 400;
+        font-size: 14px;
+        color: #727288;
+        border-color: #2B2B3F;
+
+        &:hover {
+            border-color: #2B2B3F;
+        }
+
+        &:focus {
+            border-color: #2B2B3F;
+            box-shadow: none;
+        }
+
+
+    }
+
+    input::placeholder {
+        color: #727288;
+    }
+
+    .ant-btn-icon-only {
+        color: #ffff !important;
+        font-size: 18px;
+        padding-right: 14px;
+
+    }
+
+    .ant-btn {
+        background: #2B2B3F;
+        border-color: transparent;
+        color: #fff;
+        height: 34px;
+
+        &:hover {
+            border-color: transparent;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+
+    }
+
+
+
+    //tab 
+    .select_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .select_name {
+            font-weight: 600;
+            font-size: 11px;
+            color: #FFFFFF;
+            margin-right: 8px;
+        }
+    }
+
+    .ant-tabs-nav {
+        &::before {
+            display: none;
+        }
+    }
+
+    .ant-tabs .ant-tabs-tab {
+        color: #fff;
+        margin-left: 10px;
+
+        &:hover {
+            color: none;
+        }
+    }
+
+    .ant-tabs-ink-bar {
+        width: 0;
+        display: none;
+    }
+
+    .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+
+        color: #FF7506;
+    }
+}

@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import { auth } from '../../../../configs/index'
 import './ActionProfile.scss'
+import { useDispatch } from "react-redux";
 import ModalChangePassword from "../ModalChangePassword/ModalChangePassword";
+import { logOut } from "../../../../redux/Auth/AuthSlice";
 const ActionProfile = () => {
+    const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const navigate = useNavigate()
 
@@ -14,6 +17,7 @@ const ActionProfile = () => {
     }, []);
     const handleLogout = async () => {
         await signOut(auth)
+        dispatch(logOut({}))
         navigate('/login')
     }
     return (

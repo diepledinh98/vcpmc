@@ -10,14 +10,17 @@ import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from './router/router';
 import DefaultLayout from './layout/layout';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/Store';
+import { saveUser } from './redux/Auth/AuthSlice';
 function App() {
+  const dispatch = useDispatch()
   const [IsUser, setIsUser] = useState(false)
-  const user = useSelector((state: RootState) => state.auth.user);
+  const userCurrent = useSelector((state: RootState) => state.auth);
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setIsUser(true)
+      dispatch(saveUser(user))
     } else {
       setIsUser(false)
     }
@@ -26,7 +29,7 @@ function App() {
     <div className='App'>
 
       <Routes>
-        {IsUser ? privateRoutes.map((route, index) => {
+        {userCurrent.isLogin ? privateRoutes.map((route, index) => {
           const Page = route.component;
           let Layout = DefaultLayout;
           return (

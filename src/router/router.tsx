@@ -5,8 +5,12 @@ import UpdateProfile from "../view/Auth/UpdateProfile/UpdateProfile";
 import BroadcastSchedule from "../view/BroadcastSchedule/BroadcastSchedule";
 import Help from "../view/Help/Help";
 import Manager from "../view/Manager/Manger";
+import AddPlayList from "../view/PlayList/AddPlayList/AddPlayList";
+import AddRecord from "../view/PlayList/AddRecord/AddRecord";
+import DetailPlayList from "../view/PlayList/DetailPlayList/DetailPlayList";
 import PlayList from "../view/PlayList/PlayList";
 import RecordStore from "../view/RecordStore/RecordStore";
+import UpdateRecord from "../view/RecordStore/UpdateRecord/UpdateRecord";
 import Revenue from "../view/Revenue/Revenue";
 import Setting from "../view/Setting/Setting";
 
@@ -25,10 +29,14 @@ export const privateRoutes: routeType[] = [
     { path: '/manager', component: <Manager /> },
     { path: '/revenue', component: <Revenue /> },
     { path: '/setting', component: <Setting /> },
-    { path: '/help', component: <Help /> }
+    { path: '/help', component: <Help /> },
+    { path: '/edit-record', component: <UpdateRecord /> },
+    { path: '/detail-playlist', component: <DetailPlayList /> },
+    { path: '/add-playlist', component: <AddPlayList /> },
+    { path: '/add-record', component: <AddRecord /> }
 ]
 
 export const publicRoutes: routeType[] = [
     { path: '/login', component: <Login /> },
-    { path: '/profile', component: <Profile /> },
+
 ]

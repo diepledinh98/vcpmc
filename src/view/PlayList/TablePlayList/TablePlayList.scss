@@ -1,0 +1,39 @@
+.Table__list_playlist {
+    margin-bottom: 20px;
+    background: #2B2B3F;
+    border-radius: 8px;
+    width: 1090px;
+    padding: 20px;
+
+
+
+    .ant-table {
+        table {}
+
+        .list_tag_time {
+            display: flex;
+            text-align: center;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag__cicrle {
+
+            width: 8px;
+            height: 8px;
+            background-color: #347AFF;
+            border-radius: 50%;
+        }
+
+
+    }
+
+    .ant-table-tbody>tr>td {
+
+        padding: 10px 10px !important;
+
+
+    }
+
+
+}

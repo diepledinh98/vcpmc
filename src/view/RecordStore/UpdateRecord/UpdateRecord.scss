@@ -1,0 +1,201 @@
+.update__record__page {
+    padding-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+
+
+    // bread cumnb
+    .ant-breadcrumb {
+
+        .ant-breadcrumb-link,
+        a {
+            color: #F5F5FF;
+            font-size: 13px;
+        }
+
+        .ant-breadcrumb-separator {
+            color: #FFAC69;
+            font-size: 16px;
+        }
+    }
+
+    .title__record {
+        margin-top: 5px;
+        font-weight: 600;
+        font-size: 30px;
+        letter-spacing: -0.002em;
+        color: #FFFFFF;
+
+    }
+
+    .list__btn {
+        text-align: center;
+        margin-top: 40px;
+        margin-left: -60px;
+        margin-bottom: 40px;
+    }
+
+    .btn__cancel {
+        width: 144px;
+        height: 40px;
+        border: 1px solid #FF7506;
+        border-radius: 4px;
+        color: #FF7506;
+        font-weight: 500;
+        font-size: 14px;
+        background-color: transparent;
+
+        &:hover {
+            border-color: #FF7506;
+            color: #FF7506;
+        }
+    }
+
+    .btn__save {
+        margin-left: 24px;
+        width: 144px;
+        height: 40px;
+        background: #FF7506;
+        border-radius: 4px;
+        border: 1px solid #FF7506;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 14px;
+
+        &:hover {
+            border-color: #FF7506;
+            color: #FFFFFF;
+        }
+    }
+
+    .content {
+        display: flex;
+        gap: 18px;
+        padding-left: 85px;
+        margin-top: 10px;
+
+        .title_info {
+            font-weight: 700;
+            font-size: 18px;
+            color: #FF7506;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .info_name {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .info_value {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: row-reverse;
+            font-size: 13px;
+            color: #F5F5FF;
+            opacity: 0.7;
+        }
+
+        .list_tag_time {
+            display: flex;
+            text-align: center;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tag__cicrle {
+            width: 8px;
+            height: 8px;
+            background-color: #347AFF;
+            border-radius: 50%;
+        }
+
+        .record__left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .record_info {
+                padding: 0 20px;
+                width: 404px;
+                height: 336px;
+                background: #2B2B3F;
+                border-radius: 8px;
+
+                .record_info_music {
+                    text-align: center;
+                    margin-top: 16px;
+
+                    .record__img {
+                        width: 90px;
+                        height: 90px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .music__name {
+                        font-size: 13px;
+                        color: #F5F5FF;
+                        opacity: 0.7;
+                        font-weight: 500;
+                    }
+
+                    .record_icon {
+
+                        font-size: 22px;
+                        color: #18E306;
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+            .record_authority {
+                padding: 0 20px;
+                height: 180px;
+                width: 404px;
+                background: #2B2B3F;
+                border-radius: 8px;
+            }
+        }
+
+        .record_right {
+            width: 527px;
+            height: 534px;
+            background: #2B2B3F;
+            border-radius: 8px;
+            padding: 0 16px;
+
+            .ant-input {
+
+                background: #2B2B3F;
+                border-radius: 5px;
+                color: #F5F5FF;
+                font-weight: 400;
+                font-size: 14px;
+                opacity: 0.9;
+                border: 1px solid #727288;
+                width: 490px;
+            }
+
+            h3 {
+                margin-top: -7px;
+                margin-bottom: 6px;
+                font-weight: 400;
+                font-size: 14px;
+                opacity: 0.9;
+                color: #FFFFFF;
+                justify-content: center;
+
+            }
+
+            .ant-select-selector {
+                background-color: #2B2B3F !important;
+                border: 1px solid #727288 !important;
+                border-radius: 6px;
+
+                color: #F5F5FF !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,170 @@
+.add__record__page {
+    padding-left: 20px;
+    padding-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+
+    .title__name__add___record {
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: 500;
+    }
+
+    .content__add__record {
+        display: flex;
+        gap: 20px;
+
+        .store__add__record {
+            background: rgba(47, 47, 65, 0.7);
+            border-radius: 16px;
+            padding: 16px 24px;
+            width: 580px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .actions__add__record {
+
+                .select__add__record {
+                    display: flex;
+                    gap: 20px;
+
+                    .name__select {
+                        margin-top: 10px;
+                        font-size: 14px;
+                        color: #ffffff;
+                        opacity: 0.7;
+                        font-weight: 500;
+                    }
+                }
+
+                .search__add__record {
+                    margin-top: 20px;
+
+
+                }
+            }
+        }
+
+        .table__record__added {
+            background: rgba(47, 47, 65, 0.7);
+            border-radius: 16px;
+            padding: 16px 24px;
+            width: 618px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .info__added__record {
+                display: flex;
+                gap: 80px;
+
+                .list__info__added__record {
+                    margin-top: 10px;
+                    display: flex;
+                    gap: 20px;
+                    font-size: 12px;
+                    color: #ffffff;
+                }
+
+                .value__added__record {
+                    opacity: 0.7;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+
+    .ant-btn-icon-only {
+        color: #ffff !important;
+        font-size: 18px;
+        padding-right: 14px;
+
+    }
+
+    .ant-input {
+        padding: 12px 14px;
+        height: 40px;
+        border-radius: 4px;
+        background: #33334D;
+        font-weight: 400;
+        font-size: 14px;
+        color: #727288;
+        border-color: #2B2B3F;
+
+        &:hover {
+            border-color: #2B2B3F;
+        }
+
+        &:focus {
+            border-color: #2B2B3F;
+            box-shadow: none;
+        }
+
+
+    }
+
+    input::placeholder {
+        color: #727288;
+    }
+
+
+    .ant-btn {
+        background: #33334D;
+        border-color: transparent;
+        color: #fff;
+        height: 40px;
+
+        &:hover {
+            border-color: transparent;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+
+    }
+
+    .btn__cancel {
+        width: 118px;
+        height: 32px;
+        border: 1px solid #FF7506;
+        border-radius: 4px;
+        color: #FF7506;
+        font-weight: 500;
+        font-size: 14px;
+        background-color: transparent;
+
+        &:hover {
+            border-color: #FF7506;
+            color: #FF7506;
+        }
+    }
+
+    .btn__save {
+        margin-left: 24px;
+        width: 118px;
+        height: 32px;
+        background: #FF7506;
+        border-radius: 4px;
+        border: 1px solid #FF7506;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 14px;
+
+        &:hover {
+            border-color: #FF7506;
+            color: #fff;
+        }
+    }
+
+    .btn__actions {
+        margin: 30px 0px;
+        text-align: center;
+        margin-left: -40px;
+    }
+}
