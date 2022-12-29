@@ -8,6 +8,7 @@ import ChangeLanguage from "../../shared/components/Language/Language";
 import TableComponent from "./Table/Table";
 import SelectComponent from "./Select/SelectComponent";
 import ListViewCard from "./ListViewCard/ListViewCard";
+import SearchConponent from "../../shared/components/SearchComponent/SearchComponent";
 const { Search } = Input;
 
 
@@ -24,8 +25,8 @@ const RecordStore = () => {
                 Kho bản ghi
             </div>
 
-            <Search placeholder="Tên bản ghi,ca sĩ..." style={{ width: 368 }} />
-
+            {/* <Search placeholder="Tên bản ghi,ca sĩ..." style={{ width: 368 }} /> */}
+            <SearchConponent placeholder="Tên bản ghi,ca sĩ..." />
             <div className="list_actions">
                 <SelectComponent />
                 <Tabs

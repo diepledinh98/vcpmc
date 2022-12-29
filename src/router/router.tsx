@@ -30,7 +30,7 @@ export const privateRoutes: routeType[] = [
     { path: '/revenue', component: <Revenue /> },
     { path: '/setting', component: <Setting /> },
     { path: '/help', component: <Help /> },
-    { path: '/edit-record', component: <UpdateRecord /> },
+    { path: '/edit-record/:id', component: <UpdateRecord /> },
     { path: '/detail-playlist', component: <DetailPlayList /> },
     { path: '/add-playlist', component: <AddPlayList /> },
     { path: '/add-record', component: <AddRecord /> }

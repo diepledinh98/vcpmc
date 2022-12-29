@@ -1,4 +1,9 @@
 .card__item {
+    .ant-card-cover img {
+        width: 240px;
+        height: 148px;
+        object-fit: cover;
+    }
 
     .ant-card {
         background: rgba(57, 57, 85, 0.7);
@@ -58,6 +63,8 @@
                         font-size: 7px;
                         color: #727288;
                     }
+
+
                 }
             }
         }

@@ -12,15 +12,18 @@ import { publicRoutes, privateRoutes } from './router/router';
 import DefaultLayout from './layout/layout';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/Store';
-import { saveUser } from './redux/Auth/AuthSlice';
+// import { saveUser } from './redux/Auth/AuthSlice';
+import { useAppDispatch } from './shared/hook/reduxhook';
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [IsUser, setIsUser] = useState(false)
   const userCurrent = useSelector((state: RootState) => state.auth);
+
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setIsUser(true)
-      dispatch(saveUser(user))
+      // dispatch(saveUser(user))
     } else {
       setIsUser(false)
     }
@@ -29,7 +32,7 @@ function App() {
     <div className='App'>
 
       <Routes>
-        {userCurrent.isLogin ? privateRoutes.map((route, index) => {
+        {IsUser ? privateRoutes.map((route, index) => {
           const Page = route.component;
           let Layout = DefaultLayout;
           return (

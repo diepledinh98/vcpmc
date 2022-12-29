@@ -1,11 +1,58 @@
 import { Breadcrumb, Button, Col, Form, Input, Row, Select } from 'antd'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsFileEarmarkMusic } from 'react-icons/bs'
 import { FiChevronRight } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../../shared/hook/reduxhook'
 import music from '../../../shared/images/music.png'
+import { updateRecord } from '../../../redux/RecordStore/repository'
 import './UpdateRecord.scss'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../../configs'
+import { IRecordStore } from '../../../redux/RecordStore/interface'
+import { useFormState } from 'react-hook-form'
+
+
 const UpdateRecord = () => {
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+    const idd = useParams()
+
+
+
+    let id: any = idd.id
+    const ListRecord: Array<any> | undefined = useAppSelector((state) => {
+        return state.record.ListRecord
+    });
+    const record: IRecordStore = ListRecord?.find((value) => value.id == id);
+
+    const [formData, setFormData] = useState({
+        Name: record.Name,
+        ISRC: record.ISRC,
+        time: record.time,
+        singer: record.singer,
+        author: record.author,
+        image: record.image,
+        category: record.category,
+        format: record.format,
+        usetime: record.usetime,
+        presonUpload: record.presonUpload,
+        personApproval: record.personApproval,
+        producer: record.producer,
+        ApprovalAt: record.ApprovalAt,
+        createAt: record.createAt
+    });
+
+    const onFinish = () => {
+        const idRecord = id
+        const body = formData
+        dispatch(updateRecord({ idRecord, body }))
+        navigate('/')
+    }
+
+    const setSelectedItems = (value: string) => {
+        setFormData((prev) => ({ ...prev, category: value }))
+    }
     return (
         <div className='update__record__page'>
             <div className="breadcumb">
@@ -19,7 +66,7 @@ const UpdateRecord = () => {
                 </Breadcrumb>
             </div>
             <div className='title__record'>
-                Bản ghi - Mất em
+                Bản ghi - {record.Name}
             </div>
 
             <div className='content'>
@@ -29,7 +76,7 @@ const UpdateRecord = () => {
                             Thông tin bản ghi
                         </div>
                         <div className='record_info_music'>
-                            <img src={music} alt='' className='record__img' />
+                            <img src={record.image} alt='' className='record__img' />
                             <div className='music__name'>
                                 <BsFileEarmarkMusic className='record_icon' />
                                 Matern.mp3</div>
@@ -39,7 +86,7 @@ const UpdateRecord = () => {
                                 Ngày thêm:
                             </Col>
                             <Col span={12} className="info_value">
-                                07/04/2021 - 17:45:30
+                                {record.createAt}
                             </Col>
                         </Row>
                         <Row>
@@ -47,7 +94,7 @@ const UpdateRecord = () => {
                                 Người tải lên:
                             </Col>
                             <Col span={12} className="info_value">
-                                Super Admin
+                                {record.presonUpload}
                             </Col>
                         </Row>
 
@@ -56,8 +103,8 @@ const UpdateRecord = () => {
                                 Người duyệt:
                             </Col>
                             <Col span={12} className="info_value">
-                                Hệ thống <br />
-                                (Tự động phê duyệt)
+                                {record.personApproval} <br />
+                                {/* (Tự động phê duyệt) */}
                             </Col>
                         </Row>
                         <Row>
@@ -65,7 +112,7 @@ const UpdateRecord = () => {
                                 Ngày phê duyệt:
                             </Col>
                             <Col span={12} className="info_value">
-                                07/04/2021 - 17:45:50
+                                {record.ApprovalAt}
                             </Col>
                         </Row>
                     </div>
@@ -121,74 +168,85 @@ const UpdateRecord = () => {
                         labelCol={{ span: 8 }}
                         wrapperCol={{ span: 16 }}
                         initialValues={{ remember: true }}
-                        // onFinish={onFinish}
+                        id='updateDeviceForm'
+
+                        onFinish={onFinish}
                         // onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
-                        {/* <Form.Item
-                        label="Tên đăng nhập"
-                        name="username"
-                        rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
-                    >
-                        <h3>Tên đăng nhập</h3>
-                        <Input className='username-input' />
-                    </Form.Item> */}
+
                         <h3 >Tên bản ghi: <span style={{ color: 'red' }}>*</span></h3>
                         <Form.Item
                             // label="Tên đăng nhập"
-                            name="username"
-                            rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
+                            name="Name"
+                            rules={[{ required: true, message: 'Vui lòng nhập tên bản ghi!' }]}
                         >
-                            <Input className='username-input' defaultValue="Mất em" />
+                            <Input
+                                defaultValue={formData.Name}
+                                onChange={(event => setFormData((prev) => ({ ...prev, Name: event.target.value })))}
+                            />
                         </Form.Item>
                         <h3 >Mã ISRC: <span style={{ color: 'red' }}>*</span></h3>
                         <Form.Item
                             // label="Password"
-                            name="password"
-                            rules={[{ required: true, message: 'Vui lòng nhập password!' }]}
+                            name="ISRC"
+                            rules={[{ required: true, message: 'Vui lòng nhập ISRC!' }]}
                         >
 
-                            <Input className='username-input' defaultValue='KRA40105463' />
+                            <Input
+                                defaultValue={formData.ISRC}
+                                onChange={(event => setFormData((prev) => ({ ...prev, ISRC: event.target.value })))}
+                            />
                         </Form.Item>
                         {/* {error && <div className='error__message'>{error}</div>} */}
                         <h3 >Ca sĩ: <span style={{ color: 'red' }}>*</span></h3>
                         <Form.Item
                             // label="Password"
-                            name="password"
-                            rules={[{ required: true, message: 'Vui lòng nhập password!' }]}
+                            name="singer"
+                            rules={[{ required: true, message: 'Vui lòng nhập tên ca sĩ!' }]}
                         >
 
-                            <Input className='username-input' defaultValue='Noo Phước Thịnh' />
+                            <Input
+                                defaultValue={formData.singer}
+                                onChange={(event => setFormData((prev) => ({ ...prev, singer: event.target.value })))}
+                            />
                         </Form.Item>
                         <h3 >Tác giả: <span style={{ color: 'red' }}>*</span></h3>
                         <Form.Item
                             // label="Password"
-                            name="password"
-                            rules={[{ required: true, message: 'Vui lòng nhập password!' }]}
+                            name="author"
+                            rules={[{ required: true, message: 'Vui lòng nhập tên tác giả!' }]}
                         >
 
-                            <Input className='username-input' defaultValue='Chu bin' />
+                            <Input
+                                defaultValue={formData.author}
+                                onChange={(event => setFormData((prev) => ({ ...prev, author: event.target.value })))}
+                            />
                         </Form.Item>
                         <h3 >Nhà sản xuất: <span style={{ color: 'red' }}>*</span></h3>
                         <Form.Item
                             // label="Password"
-                            name="password"
-                            rules={[{ required: true, message: 'Vui lòng nhập password!' }]}
+                            name="producer"
+                            rules={[{ required: true, message: 'Vui lòng nhập tên nhà sản xuất!' }]}
                         >
 
-                            <Input className='username-input' defaultValue='Nguyễn Nam Minh Thụy' />
+                            <Input
+                                defaultValue={formData.producer}
+                                onChange={(event => setFormData((prev) => ({ ...prev, producer: event.target.value })))}
+                            />
                         </Form.Item>
 
 
                         <h3 >Thể Loại: <span style={{ color: 'red' }}>*</span></h3>
                         <Form.Item
                             // label="Password"
-                            // name="password"
-                            rules={[{ required: true, message: 'Vui lòng nhập password!' }]}
+                            name="category"
+                            rules={[{ required: true, message: 'Vui lòng nhập tên thể loại!' }]}
                         >
 
                             <Select
-                                defaultValue="All"
+                                defaultValue={formData.category}
+                                onChange={setSelectedItems}
                                 style={{ width: 490 }}
                                 //   onChange={handleChange}
 
@@ -198,15 +256,15 @@ const UpdateRecord = () => {
                                         label: 'Tất cả',
                                     },
                                     {
-                                        value: 'pop',
+                                        value: 'Pop',
                                         label: 'Pop',
                                     },
                                     {
-                                        value: 'edm',
+                                        value: 'EDM',
                                         label: 'EDM',
                                     },
                                     {
-                                        value: 'ballad',
+                                        value: 'Ballad',
                                         label: 'Ballad',
                                     },
                                 ]}
@@ -226,7 +284,7 @@ const UpdateRecord = () => {
                     </Button>
                 </Link>
 
-                <Button htmlType="submit" className='btn__save'>
+                <Button className='btn__save' form="updateDeviceForm" onClick={onFinish}>
                     Lưu
                 </Button>
             </div>

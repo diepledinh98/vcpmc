@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAblkoLZJ1d01Bl1YXc7mbvorZEMiXGy_4",
-    authDomain: "vcpmc-b1fbb.firebaseapp.com",
-    projectId: "vcpmc-b1fbb",
-    storageBucket: "vcpmc-b1fbb.appspot.com",
-    messagingSenderId: "888455003518",
-    appId: "1:888455003518:web:b5e0f00d565be3ebfec72f"
+    apiKey: "AIzaSyDa5bnSmXjg1gxp_ZrXOUEbQJzH6pZ8nOY",
+    authDomain: "vpcmcproject.firebaseapp.com",
+    projectId: "vpcmcproject",
+    storageBucket: "vpcmcproject.appspot.com",
+    messagingSenderId: "105705366707",
+    appId: "1:105705366707:web:8309096ab4945baefd3cc6"
 };
 
 const app = initializeApp(firebaseConfig)

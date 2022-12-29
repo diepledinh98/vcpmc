@@ -1,20 +1,32 @@
-import React from 'react'
+import React, { memo, useEffect } from 'react'
 import type { ColumnsType } from 'antd/es/table';
 import Table from 'antd/es/table';
 import { Space, Tag } from 'antd';
 import './Table.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/Store';
+import { fetchRecords } from '../../../redux/RecordStore/repository';
+import { useAppDispatch } from '../../../shared/hook/reduxhook';
+import { Link } from 'react-router-dom';
+import { IRecordStore } from '../../../redux/RecordStore/interface';
 interface DataType {
-    STT: string
+    STT?: string
+    id?: string
     Name: string
     ISRC: string
     time: string
     singer: string
+    image: string
     author: string
     category: string
     format: string
     usetime: string
-    update: string
-    listen: string
+    presonUpload: string
+    personApproval: string
+    producer: string
+    ApprovalAt: string
+    createAt: string
+
 }
 
 const columns: ColumnsType<DataType> = [
@@ -22,6 +34,7 @@ const columns: ColumnsType<DataType> = [
         title: 'STT',
         dataIndex: 'STT',
         key: 'STT',
+        render: (text, object, index) => <div> {index + 1}</div>
 
     },
     {
@@ -83,9 +96,11 @@ const columns: ColumnsType<DataType> = [
         title: '',
         key: 'update',
         dataIndex: 'update',
-        render: (action: any) => {
+        render: (_, { id }) => {
+
+
             return (
-                <a style={{ color: '#FF7506', textDecoration: 'underline' }}>Cập nhật</a>
+                <Link to={`/edit-record/${id}`} style={{ color: '#FF7506', textDecoration: 'underline' }}>Cập nhật</Link>
             )
         }
     },
@@ -93,7 +108,9 @@ const columns: ColumnsType<DataType> = [
         title: '',
         key: 'listen',
         dataIndex: 'listen',
-        render: (action: any) => {
+        render: (action: any, index) => {
+
+
             return (
                 <a style={{ color: '#FF7506', textDecoration: 'underline' }}>Nghe</a>
             )
@@ -101,159 +118,18 @@ const columns: ColumnsType<DataType> = [
     },
 ];
 
-const data: DataType[] = [
-    {
-        STT: '1',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '2',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '3',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '4',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '5',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '5',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '6',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '7',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '8',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '9',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-    {
-        STT: '10',
-        Name: 'Mất em ',
-        ISRC: 'KRA40105463',
-        time: '04:27',
-        singer: 'Phan Mạnh Quỳnh',
-        author: 'Phan Mạnh Quỳnh',
-        category: 'Ballad',
-        format: 'Audio',
-        usetime: 'Còn thời hạn',
-        update: 'Cập nhật',
-        listen: 'Nghe',
-    },
-
-];
-
 const TableComponent = () => {
+    const dispatch = useAppDispatch()
+
+    const ListRecord = useSelector((state: RootState) => state.record.ListRecord)
+    useEffect(() => {
+        dispatch(fetchRecords())
+    }, [dispatch])
     return (
         <div className='Table__list'>
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={ListRecord} />
         </div>
     )
 }
 
-export default TableComponent
+export default memo(TableComponent)

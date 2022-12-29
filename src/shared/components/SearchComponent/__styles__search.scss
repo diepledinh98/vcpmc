@@ -1,0 +1,30 @@
+.search__component {
+    .ant-btn-icon-only {
+        color: #ffff !important;
+        font-size: 18px;
+        padding-right: 14px;
+
+    }
+
+    .ant-input {
+        padding: 12px 14px;
+        height: 34px;
+        border-radius: 4px;
+        background: #2B2B3F;
+        font-weight: 400;
+        font-size: 14px;
+        color: #727288;
+        border-color: #2B2B3F;
+
+        &:hover {
+            border-color: #2B2B3F;
+        }
+
+        &:focus {
+            border-color: #2B2B3F;
+            box-shadow: none;
+        }
+
+
+    }
+}
