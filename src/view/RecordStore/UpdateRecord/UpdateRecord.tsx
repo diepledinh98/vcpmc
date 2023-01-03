@@ -35,6 +35,7 @@ const UpdateRecord = () => {
         image: record.image,
         category: record.category,
         format: record.format,
+        video: record.video,
         usetime: record.usetime,
         presonUpload: record.presonUpload,
         personApproval: record.personApproval,

@@ -50,90 +50,94 @@ const ModalChangePassword = (props: OpenProps) => {
         props.setIsOpen(false)
     };
     return (
+        <div className='changepass__page'>
 
-        <Modal
-            title="Thay đổi mật khẩu"
-            open={props.onIsOpen}
-            onOk={handleOk}
-            confirmLoading={confirmLoading}
-            onCancel={handleCancel}
-            width={392}
-            footer={null}
-            style={{
-                backgroundColor: '#3E3E5B'
-            }}
-        >
-            <div className='from__change__password'>
-                <Form
 
-                    labelCol={{ span: 8 }}
-                    wrapperCol={{ span: 16 }}
-                    initialValues={{ remember: true }}
-                    onFinish={handleOk}
-                    // onFinishFailed={onFinishFailed}
-                    autoComplete="off"
-                >
-                    <h3>Mật khẩu hiện tại:</h3>
-                    <Form.Item
+            <Modal
+                title="Thay đổi mật khẩu"
+                open={props.onIsOpen}
+                onOk={handleOk}
+                confirmLoading={confirmLoading}
+                onCancel={handleCancel}
+                width={392}
+                footer={null}
+                style={{
+                    backgroundColor: '#3E3E5B'
+                }}
+                className="modal__changepassword"
+            >
+                <div className='from__change__password'>
+                    <Form
 
-                        name="username"
-                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu hiện tại!' }]}
+                        labelCol={{ span: 8 }}
+                        wrapperCol={{ span: 16 }}
+                        initialValues={{ remember: true }}
+                        onFinish={handleOk}
+                        // onFinishFailed={onFinishFailed}
+                        autoComplete="off"
                     >
-                        <Input.Password />
-                    </Form.Item>
-                    <h3>Mật khẩu mới:</h3>
-                    <Form.Item
+                        <h3>Mật khẩu hiện tại:</h3>
+                        <Form.Item
 
-                        name="retype_password"
-                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu mới!' }]}
-                    >
-                        <Input.Password onChange={(event) => setNewPassword(event.target.value)} />
-                    </Form.Item>
+                            name="username"
+                            rules={[{ required: true, message: 'Vui lòng nhập mật khẩu hiện tại!' }]}
+                        >
+                            <Input.Password />
+                        </Form.Item>
+                        <h3>Mật khẩu mới:</h3>
+                        <Form.Item
+
+                            name="retype_password"
+                            rules={[{ required: true, message: 'Vui lòng nhập mật khẩu mới!' }]}
+                        >
+                            <Input.Password onChange={(event) => setNewPassword(event.target.value)} />
+                        </Form.Item>
 
 
-                    <h3>Nhập lại mật khẩu mới:</h3>
-                    <Form.Item
+                        <h3>Nhập lại mật khẩu mới:</h3>
+                        <Form.Item
 
-                        name="again_newpassword"
-                        dependencies={['retype_password']}
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Vui lòng nhập lai mật khẩu mới!'
-                            },
-                            ({ getFieldValue }) => ({
-                                validator(_, passwordConfirm) {
-                                    if (!passwordConfirm || getFieldValue('retype_password') === passwordConfirm) {
-                                        return Promise.resolve();
-                                    }
-                                    return Promise.reject(new Error('Mat khau khong trung khop'));
+                            name="again_newpassword"
+                            dependencies={['retype_password']}
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Vui lòng nhập lai mật khẩu mới!'
                                 },
-                            }),
-                        ]}
+                                ({ getFieldValue }) => ({
+                                    validator(_, passwordConfirm) {
+                                        if (!passwordConfirm || getFieldValue('retype_password') === passwordConfirm) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('Mat khau khong trung khop'));
+                                    },
+                                }),
+                            ]}
 
-                    >
-                        <Input.Password />
-                    </Form.Item>
-                    <Row>
-                        <Col>
-                            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                                <Button className='btn__cancel' onClick={handleCancel}>
-                                    Hủy
-                                </Button>
-                            </Form.Item>
-                        </Col>
+                        >
+                            <Input.Password />
+                        </Form.Item>
+                        <Row>
+                            <Col>
+                                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                                    <Button className='btn__cancel' onClick={handleCancel}>
+                                        Hủy
+                                    </Button>
+                                </Form.Item>
+                            </Col>
 
-                        <Col >
-                            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                                <Button htmlType="submit" className='btn__save' onClick={handleOk}>
-                                    Lưu
-                                </Button>
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                </Form>
-            </div>
-        </Modal>
+                            <Col >
+                                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                                    <Button htmlType="submit" className='btn__save' onClick={handleOk}>
+                                        Lưu
+                                    </Button>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                    </Form>
+                </div>
+            </Modal>
+        </div>
     )
 }
 

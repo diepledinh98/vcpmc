@@ -31,9 +31,9 @@ export const privateRoutes: routeType[] = [
     { path: '/setting', component: <Setting /> },
     { path: '/help', component: <Help /> },
     { path: '/edit-record/:id', component: <UpdateRecord /> },
-    { path: '/detail-playlist', component: <DetailPlayList /> },
-    { path: '/add-playlist', component: <AddPlayList /> },
-    { path: '/add-record', component: <AddRecord /> }
+    { path: '/playlist/detail-playlist', component: <DetailPlayList /> },
+    { path: '/playlist/add-playlist', component: <AddPlayList /> },
+    { path: '/playlist/add-playlist/add-record', component: <AddRecord /> }
 ]
 
 export const publicRoutes: routeType[] = [

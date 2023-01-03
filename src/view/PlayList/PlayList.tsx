@@ -6,6 +6,7 @@ import TablePlayList from "./TablePlayList/TablePlayList";
 import { BiListPlus } from "react-icons/bi";
 import ListViewCard from "../RecordStore/ListViewCard/ListViewCard";
 import ListCardPlayList from "./ListCardPlayList/ListCardPlayList";
+import { Link } from "react-router-dom";
 const { Search } = Input;
 
 const PlayList = () => {
@@ -35,10 +36,10 @@ const PlayList = () => {
                     ]}
                 />
 
-                <div className="link__add_playlist">
+                <Link to='/playlist/add-playlist' className="link__add_playlist">
                     <BiListPlus className="iconadd" />
                     Thêm playlist
-                </div>
+                </Link>
             </div>
             <div className="content__playlist" style={{ maxWidth: 1060 }}>
                 {showItemView === '1' ? <TablePlayList /> : <ListCardPlayList />}

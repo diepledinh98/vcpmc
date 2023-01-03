@@ -15,13 +15,7 @@ const ListViewCard = () => {
                     return (
                         <>
                             <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
-                            <Col key={index} span={4} ><CardItem record={record} /></Col>
+
                         </>
 
                     )

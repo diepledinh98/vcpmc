@@ -6,6 +6,7 @@ export interface IRecordStore {
     singer: string
     author: string
     image: string
+    video: string
     category: string
     format: string
     usetime: string

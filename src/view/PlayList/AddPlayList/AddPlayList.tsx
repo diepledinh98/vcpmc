@@ -6,6 +6,7 @@ import { Button, message, Upload } from 'antd';
 import TextArea from "antd/es/input/TextArea";
 import { ColumnsType } from "antd/es/table";
 import { AiOutlinePlus } from "react-icons/ai";
+import { Link } from "react-router-dom";
 interface DataType {
     STT: string
     Name: string
@@ -140,14 +141,14 @@ const AddPlayList = () => {
                         <Table columns={columns} dataSource={data} pagination={false} />
                     </div>
                 </div>
-                <div className="actions__add__record">
+                <Link to='/playlist/add-playlist/add-record' className="actions__add__record">
                     <div className='action_edit' >
                         <div className='icon_action_profile' >
                             <AiOutlinePlus />
                         </div>
                         Thêm bản ghi
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     )
