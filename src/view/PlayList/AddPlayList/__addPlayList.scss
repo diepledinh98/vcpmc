@@ -3,6 +3,50 @@
     padding-top: 5px;
     font-family: 'Montserrat', sans-serif;
 
+    .img__add {
+        margin: 10px 0px;
+        width: 195px;
+        height: 195px;
+        border-radius: 4px;
+    }
+
+    .btn__actions {
+        text-align: center;
+        margin: 30px 0px;
+    }
+
+    .btn__cancel {
+        width: 118px;
+        height: 32px;
+        border: 1px solid #FF7506;
+        border-radius: 4px;
+        color: #FF7506;
+        font-weight: 500;
+        font-size: 14px;
+        background-color: transparent;
+
+        &:hover {
+            border-color: #FF7506;
+            color: #FF7506;
+        }
+    }
+
+    .btn__save {
+        margin-left: 24px;
+        width: 118px;
+        height: 32px;
+        background: #FF7506;
+        border-radius: 4px;
+        border: 1px solid #FF7506;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 14px;
+
+        &:hover {
+            border-color: #FF7506;
+            color: #fff;
+        }
+    }
 
     .content__add_playlist {
         display: flex;

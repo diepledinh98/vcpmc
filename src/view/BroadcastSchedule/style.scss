@@ -1,0 +1,49 @@
+.sechedule__page {
+    padding-left: 20px;
+
+    .content {
+        display: flex;
+
+        .content__table {
+            width: 1095px;
+            background: rgba(47, 47, 65, 0.7);
+        }
+
+        .actions__add__record {
+            margin-left: 36px;
+            width: 78px;
+            height: 100px;
+            background-color: #2F2F41;
+            border-radius: 16px 0px 0px 16px;
+
+            .icon_action_profile {
+                cursor: pointer;
+                // margin-top: 10px;
+                margin-bottom: 8px;
+                margin-left: 20px;
+                font-size: 25px;
+                height: 40px;
+                width: 40px;
+                color: #FF7506;
+                border-radius: 50%;
+                background: rgba(114, 114, 136, 0.5);
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+
+            }
+
+            .action_edit {
+                margin-top: 15px;
+                color: #FFFFFF;
+                opacity: 0.7;
+                font-size: 12px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1;
+            }
+        }
+    }
+}

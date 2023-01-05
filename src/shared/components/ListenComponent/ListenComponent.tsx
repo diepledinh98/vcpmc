@@ -1,5 +1,5 @@
 import { Button, Modal } from "antd";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 import { useAppSelector } from "../../hook/reduxhook";
@@ -31,6 +31,7 @@ const ListenComponent = (props: OpenProps) => {
         setPlayTime(state.playedSeconds);
 
 
+
     }
 
 
@@ -55,6 +56,7 @@ const ListenComponent = (props: OpenProps) => {
                     controls
                     onProgress={handleProgress}
                     style={{ marginTop: -15, marginLeft: -19 }}
+
 
                 />
 
