@@ -7,7 +7,16 @@ import TableDetailPlayList from './TableDetailPlayList/TableDetailPlayList'
 import ActionDetailPlayList from '../../Auth/components/ActionDetailPlayList/ActionDetailPlayList'
 import { IoEarthSharp, IoRepeatOutline } from "react-icons/io5";
 import { IoMdShuffle } from "react-icons/io";
+import { useParams } from 'react-router-dom'
+import { useAppSelector } from '../../../shared/hook/reduxhook'
+import PlayList from '../PlayList'
 const DetailPlayList = () => {
+
+    const { id } = useParams()
+    const playlists: Array<any> | undefined = useAppSelector((state) => {
+        return state.playlist.PlayLists
+    });
+    const playlist = playlists?.find((value) => value.id == id);
     return (
         <div className='detail__playlist__page'>
             <div className="breadcumb">
@@ -26,84 +35,43 @@ const DetailPlayList = () => {
             <div className='content__detail'>
                 <div className='info__playlist'>
                     <div className='title__info__playlist'>
-                        <img src={music} alt='' className='img__info__playlist' />
+                        <img src={playlist.image} alt='' className='img__info__playlist' />
                         <h3> Top ca khúc 2021</h3>
                     </div>
                     <div className='content__info__playlist'>
                         <Row>
                             <Col span={15}>Người Tạo:</Col>
-                            <Col span={9} className="info__value">Super Admin</Col>
+                            <Col span={9} className="info__value">{playlist.personAt}</Col>
                         </Row>
                         <Row>
                             <Col span={15}>Tổng số:</Col>
-                            <Col span={9} className="info__value">8 bản ghi</Col>
+                            <Col span={9} className="info__value">{playlist.numberPlayList} bản ghi</Col>
                         </Row>
                         <Row>
                             <Col span={15}>Tổng thời lượng:</Col>
-                            <Col span={9} className="info__value">01:31:16</Col>
+                            <Col span={9} className="info__value">{playlist.timePlayList}</Col>
                         </Row>
                     </div>
                     <div className='des__info__playlist'>
-                        Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.
+                        {playlist.description}
                     </div>
                     <div className='topic__info__playlist'>
                         <Row>
-                            <Col span={8}>
-                                <div >
-                                    <div className='list_tag_time' >
-                                        <div className='tag__cicrle' />
-                                        Chủ đề 1
-                                    </div>
+                            {playlist.topic.map((item: any, index: any) => {
+                                return (
+                                    <Col span={8} key={index}>
+                                        <div >
+                                            <div className='list_tag_time' >
+                                                <div className='tag__cicrle' />
+                                                {item}
+                                            </div>
 
-                                </div>
-                            </Col>
-                            <Col span={8}>
-                                <div >
-                                    <div className='list_tag_time' >
-                                        <div className='tag__cicrle' />
-                                        Chủ đề 2
-                                    </div>
+                                        </div>
+                                    </Col>
+                                )
+                            })}
 
-                                </div>
-                            </Col>
-                            <Col span={8}>
-                                <div >
-                                    <div className='list_tag_time' >
-                                        <div className='tag__cicrle' />
-                                        Chủ đề 3
-                                    </div>
 
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col span={8}>
-                                <div >
-                                    <div className='list_tag_time' >
-                                        <div className='tag__cicrle' />
-                                        Chủ đề 1
-                                    </div>
-
-                                </div>
-                            </Col>
-                            <Col span={8}>
-                                <div >
-                                    <div className='list_tag_time' >
-                                        <div className='tag__cicrle' />
-                                        Chủ đề 2
-                                    </div>
-
-                                </div>
-                            </Col>
-                            <Col span={8}>
-                                <div >
-                                    <div className='list_tag_time' >
-                                        <div className='tag__cicrle' />
-                                        Chủ đề 3
-                                    </div>
-
-                                </div>
-                            </Col>
                         </Row>
                     </div>
 
@@ -123,10 +91,10 @@ const DetailPlayList = () => {
                     </div>
                 </div>
                 <div className='list__record'>
-                    <TableDetailPlayList />
+                    <TableDetailPlayList dataTable={playlist.listRecord} />
                 </div>
                 <div className='list__actions'>
-                    <ActionDetailPlayList />
+                    <ActionDetailPlayList id={id} />
                 </div>
             </div>
         </div>

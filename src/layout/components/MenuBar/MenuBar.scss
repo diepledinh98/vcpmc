@@ -6,6 +6,64 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
+    // .ant-menu>.ant-menu-item:hover,
+    // .ant-menu>.ant-menu-submenu:hover,
+    // .ant-menu>.ant-menu-item-active,
+    .ant-menu>.ant-menu-submenu-active,
+    .ant-menu>.ant-menu-item-open,
+    .ant-menu>.ant-menu-submenu-open,
+    .ant-menu>.ant-menu-item-selected,
+    .ant-menu>.ant-menu-submenu-selected {
+        background-color: #020220 !important;
+        position: relative;
+        color: #FF7506;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 60px;
+            background-color: #FF7506;
+            border-radius: 4px;
+            left: 0;
+
+        }
+    }
+
+
+
+    :where(.css-dev-only-do-not-override-26rdvq).ant-menu-light .ant-menu-submenu-selected>.ant-menu-submenu-title {
+        color: #FF7506;
+
+        &:hover {
+            color: #FF7506;
+        }
+    }
+
+    .ant-menu-light .ant-menu-submenu-title:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected) {
+        color: #fff !important;
+    }
+
+    .ant-menu-submenu-title {
+        height: 60px !important;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+
+
+
+        .ant-menu-item-icon {
+            margin-left: 25px !important;
+            text-align: center !important
+        }
+
+        .ant-menu-title-content {
+            height: 20px !important;
+            margin-top: -5px !important;
+
+        }
+    }
+
     .menubar__logo {
         padding-top: 25px;
         padding-bottom: 60px;
@@ -67,4 +125,30 @@
     }
 
 
+
+    // submenu
+
+    .ant-menu-submenu {
+        background-color: #020220 !important;
+
+        .menuitem {
+            color: #ffff;
+        }
+    }
+
+
+}
+
+.ant-menu-submenu.ant-menu-submenu-popup.ant-menu.ant-menu-light.ant-menu-submenu-placement-rightTop {
+    ul {
+        background-color: #020220 !important;
+        color: #fff;
+
+        li {
+            &:hover {
+                background-color: #2e2e41;
+                color: var(--white);
+            }
+        }
+    }
 }

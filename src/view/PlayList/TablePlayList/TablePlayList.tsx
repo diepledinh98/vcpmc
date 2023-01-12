@@ -1,16 +1,18 @@
 import { Table, Tag } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { fetchPlayLists } from '../../../redux/PlayList/repository'
+import { useAppDispatch, useAppSelector } from '../../../shared/hook/reduxhook'
 import './TablePlayList.scss'
 interface DataType {
-    STT: string
+    id?: string
     Name: string
     NumberRecord: number
     time: string
-    topic: string
+    topic: string[]
     createAt: string
     PersonCreateAt: string
-    detail: string
 
 }
 
@@ -19,7 +21,8 @@ const columns: ColumnsType<DataType> = [
         title: 'STT',
         dataIndex: 'STT',
         key: 'STT',
-
+        align: 'center',
+        render: (text, object, index) => <div> {index + 1}</div>
     },
     {
         title: 'Tiêu đề',
@@ -43,17 +46,12 @@ const columns: ColumnsType<DataType> = [
         title: 'Chủ đề',
         key: 'topic',
         dataIndex: 'topic',
-        render: (action: any) => {
-            return (
-                <>
-                    <Tag>Pop</Tag>
-                    <Tag>Chill</Tag>
-                    <Tag>Dinga</Tag>
-                    <Tag>Songs</Tag>
-                    <Tag>Lofi</Tag>
-                    <Tag>...</Tag>
-                </>
-            )
+        render: (_, { topic }) => {
+            return topic.map((item, index) => {
+                return (
+                    <Tag key={index}>{item}</Tag>
+                )
+            })
         }
 
     },
@@ -74,139 +72,43 @@ const columns: ColumnsType<DataType> = [
         title: '',
         key: 'detail',
         dataIndex: 'detail',
-        render: (action: any) => {
+        render: (_, { id }) => {
             return (
-                <a style={{ color: '#FF7506', textDecoration: 'underline' }}>Chi tiết</a>
+                <Link to={`/playlist/detail-playlist/${id}`} style={{ color: '#FF7506', textDecoration: 'underline' }}>Chi tiết</Link>
             )
         }
     }
 ];
 
 const data: DataType[] = [
-    {
-        STT: '1',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    },
-    {
-        STT: '2',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '3',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '4',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '5',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '6',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '7',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '8',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '9',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '10',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '11',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '12',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    }, {
-        STT: '13',
-        Name: 'Top ca khúc 2021',
-        NumberRecord: 20,
-        time: '01:04:27',
-        topic: 'Pop',
-        createAt: '22/10/2021',
-        PersonCreateAt: 'Cindy Cường',
-        detail: 'chi tiết'
-    },
+
 ]
 const TablePlayList = () => {
+    const dispatch = useAppDispatch()
+    const playlists = useAppSelector((state) => state.playlist.PlayLists)
+
+    let dataRecord: DataType[] | any;
+
+    dataRecord = playlists.map((item, index) => {
+        return {
+            id: item.id,
+            Name: item.namePlayList,
+            NumberRecord: item.numberPlayList,
+            time: item.timePlayList,
+            topic: item.topic,
+            createAt: item.createAt,
+            PersonCreateAt: item.personAt
+        }
+    })
+
+    useEffect(() => {
+        dispatch(fetchPlayLists())
+    }, [dispatch])
+    console.log(playlists);
+
     return (
         <div className='Table__list_playlist'>
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={dataRecord} />
         </div>
     )
 }

@@ -1,0 +1,108 @@
+.authorize__contract__page {
+
+    .ant-btn {
+        background: #2B2B3F;
+        border-color: transparent;
+        color: #fff;
+        height: 34px;
+
+        &:hover {
+            border-color: transparent;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+
+    }
+
+    .list_actions {
+        margin-bottom: 20px;
+        display: flex;
+        margin-top: 20px;
+        gap: 44px;
+
+        .select_item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .select_name {
+                font-weight: 600;
+                font-size: 13px;
+                color: #FFFFFF;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .list_tag_time {
+        display: flex;
+        text-align: center;
+        gap: 8px;
+        align-items: center;
+        font-size: 12px;
+        margin-right: 6px;
+    }
+
+    .tag__cicrle {
+
+        width: 8px;
+        height: 8px;
+        background-color: #347AFF;
+        border-radius: 50%;
+    }
+
+    .content {
+        display: flex;
+
+        .content__table {
+            width: 1090px;
+
+            .ant-table-tbody>tr>td {
+                font-size: 12px;
+            }
+        }
+
+        //action add 
+        .actions__add__record {
+            margin-top: -60px;
+            margin-left: 55px;
+            width: 78px;
+            height: 100px;
+            background-color: #2F2F41;
+            border-radius: 16px 0px 0px 16px;
+
+            .icon_action_profile {
+                cursor: pointer;
+                // margin-top: 10px;
+                margin-bottom: 8px;
+                margin-left: 20px;
+                font-size: 25px;
+                height: 40px;
+                width: 40px;
+                color: #FF7506;
+                border-radius: 50%;
+                background: rgba(114, 114, 136, 0.5);
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+
+            }
+
+            .action_edit {
+                margin-top: 15px;
+                color: #FFFFFF;
+                opacity: 0.7;
+                font-size: 12px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1;
+            }
+        }
+    }
+}

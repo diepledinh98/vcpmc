@@ -1,0 +1,164 @@
+.add__contract__page {
+    padding-left: 20px;
+
+    .info__auhtorize__person {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #FFAC69;
+
+    }
+
+    .ant-form-item .ant-form-item-label>label {
+        font-size: 12px !important;
+    }
+
+    .attach__file {
+        margin-left: 100px;
+        display: flex;
+
+        p {
+            color: #fff;
+            font-weight: 600;
+
+        }
+
+        input[type="file"] {
+            color: #fff;
+            // display: none;
+        }
+    }
+
+    .profit {
+        margin-left: 100px;
+
+        .profit__title {
+            font-size: 14px;
+            color: #FFAC69;
+
+            font-weight: 600;
+        }
+
+        .content__profit {
+            margin-top: 10px;
+            display: flex;
+            width: 240px;
+            justify-content: space-between;
+            color: #F5F5FF;
+            font-size: 13px;
+            font-weight: 500;
+
+            p {
+                opacity: 0.8;
+            }
+        }
+
+        .content__profit__relationship {
+            margin-top: 10px;
+            display: flex;
+            width: 240px;
+            font-size: 13px;
+            justify-content: space-between;
+            color: #fff;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+    }
+
+    // input
+    .ant-form-item .ant-form-item-label>label {
+        color: #fff;
+        font-weight: 600;
+        font-size: 13px;
+        text-align: left;
+    }
+
+    .ant-input {
+        margin-left: 20px;
+        width: 230px;
+        border: none;
+        height: 32px;
+        background: #2B2B3F;
+        border-radius: 5px;
+        color: #F5F5FF;
+        font-weight: 400;
+        font-size: 13px;
+        margin-right: 16px;
+        opacity: 0.8;
+        border: 1px solid #727288;
+
+    }
+
+
+    .ant-picker {
+        margin-left: 20px;
+        width: 230px;
+        border: 1px solid #727288;
+        height: 36px;
+        background: #2B2B3F;
+        border-radius: 5px;
+        color: #F5F5FF;
+        font-weight: 400;
+        font-size: 14px;
+        margin-right: 16px;
+
+    }
+
+    .ant-picker-suffix {
+        font-size: 18px;
+        color: #FF7506;
+    }
+
+    :where(.css-dev-only-do-not-override-26rdvq).ant-picker .ant-picker-input>input {
+        color: #ffff;
+    }
+
+    // ant radio 
+
+    .ant-radio-group {
+        label {
+            font-size: 15px;
+            color: #fff;
+        }
+
+    }
+
+    // btn
+
+    .btn_group {
+        margin: 50px 0px;
+    }
+
+    .btn__cancel {
+        width: 118px;
+        height: 32px;
+        border: 1px solid #FF7506;
+        border-radius: 4px;
+        color: #FF7506;
+        font-weight: 500;
+        font-size: 14px;
+        background-color: transparent;
+    }
+
+    .btn__save {
+        margin-left: 24px;
+        width: 118px;
+        height: 32px;
+        background: #FF7506;
+        border-radius: 4px;
+        border: 1px solid #FF7506;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 14px;
+
+        &:hover {
+            border-color: #FF7506;
+        }
+    }
+
+    .tg {
+        display: flex;
+        flex-direction: row;
+    }
+}

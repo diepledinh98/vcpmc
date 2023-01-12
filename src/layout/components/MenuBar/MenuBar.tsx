@@ -3,7 +3,7 @@ import './MenuBar.scss'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logo from '../../../shared/images/logo.png'
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
 import { BsCollectionPlay, BsCalendar4Week } from "react-icons/bs";
@@ -33,16 +33,26 @@ const items: MenuItem[] = [
     getItem('Kho bản ghi', '/', <BsCollectionPlay style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />),
     getItem('Playlist', '/playlist', <MdPlaylistPlay style={{ fontSize: 35, marginTop: 5, marginLeft: 13 }} />),
     getItem('Lập lịch phát', '/schedule', <VscCalendar style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />),
-    getItem('Quản lý', '/manager', <CgFileDocument style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />),
-    getItem('Doanh thu', '/revenue', <TbReportMoney style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />),
+    getItem('Quản lý', '/manager', <CgFileDocument style={{ fontSize: 25, marginLeft: 13, color: '#fff' }} />, [
+        getItem('Quản lý hợp đồng', '/manager/contract'),
+        getItem('Quản lý thiết bị', '/manager/device'),
+        getItem('Đơn vị ủy quyền', '/manager/Authorization-unit'),
+        getItem('Đơn vị sử dụng', '/manager/Unit-used'),
+    ]),
+    getItem('Doanh thu', '/revenue', <TbReportMoney style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />, [
+        getItem('Báo cáo doanh thu', '9'),
+        getItem('Lịch sử đối soát', '10'),
+        getItem('Phân phối doanh thu', '11'),
+
+    ]),
     getItem('Cài đặt', '/setting', <FiSettings style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />),
-    getItem('Hỗ trợ', '/help', <FiHelpCircle style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />),
+    getItem('Hỗ trợ', '/help', <FiHelpCircle style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />,),
 ];
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
 const MenuBar = () => {
     const navigate = useNavigate()
     const [openKeys, setOpenKeys] = useState(['sub1']);
-
+    const location = useLocation();
     const handleLogo = () => {
         navigate('/')
     }
@@ -63,10 +73,11 @@ const MenuBar = () => {
                 onClick={({ key }) => {
                     navigate(key)
                 }}
-                mode="inline"
+                mode="vertical"
                 openKeys={openKeys}
                 onOpenChange={onOpenChange}
                 defaultSelectedKeys={[window.location.pathname]}
+                // selectedKeys={[`/${location.pathname.split("/")[1]}`]}
                 style={{ width: 120 }}
                 items={items}
             />

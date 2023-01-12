@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Action } from "@remix-run/router";
 import { IRecordStore } from "../RecordStore/interface";
 import { IPlayList } from "./interface";
-
+import { createPlayList } from "./repository";
+import { fetchPlayLists } from "./repository";
 interface ListPlayListType {
     PlayLists: IPlayList[]
     Record__Added: IRecordStore[]
@@ -31,7 +33,15 @@ export const PlayListSlice = createSlice({
         }
     },
     extraReducers(builder) {
-
+        builder
+            .addCase(createPlayList.fulfilled, (state, action) => {
+                const playlist = action.payload
+                state.PlayLists.push(playlist)
+                state.Record__Added = []
+            })
+            .addCase(fetchPlayLists.fulfilled, (state, action) => {
+                state.PlayLists = action.payload
+            })
     },
 })
 export const { addRecord, deleteRecord, deleteAllRecord } = PlayListSlice.actions

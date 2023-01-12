@@ -4,9 +4,13 @@ import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/ico
 import { Avatar, Card } from 'antd';
 import { FiEdit } from "react-icons/fi";
 import { BsExclamationCircle, BsFillExclamationCircleFill } from "react-icons/bs";
+import { IPlayList } from "../../../../redux/PlayList/interface";
 
 const { Meta } = Card;
-const CardItemPlayList = () => {
+interface PlayListProps {
+    item: IPlayList
+}
+const CardItemPlayList = (props: PlayListProps) => {
     return (
         <div className="card__item">
             <Card
@@ -14,36 +18,31 @@ const CardItemPlayList = () => {
                 cover={
                     <img
                         alt="example"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                        src={props.item.image}
+                        style={{ objectFit: 'cover' }}
                     />
                 }
 
             >
                 <div className="card__container">
                     <div className="card__title">
-                        Handcrafted Fresh Bacon Multy
+                        {props.item.namePlayList}
                     </div>
                     <div className="card__actions">
-                        <div className="card__action-item">
-                            <span style={{ fontSize: 11 }}>Chủ đề ví dụ</span>
+                        {props.item.topic.map((topic_item, index) => {
+                            return (
+                                <div className="card__action-item" key={index}>
+                                    <span style={{ fontSize: 11 }}>{topic_item}</span>
+                                </div>
+                            )
+                        })}
 
-                        </div>
-                        <div className="card__action-item">
-                            <span style={{ fontSize: 11 }}>Pop</span>
-
-                        </div>
-                        <div className="card__action-item">
-                            <span style={{ fontSize: 11 }}>Trending</span>
-                        </div>
-                        <div className="card__action-item">
-                            <span style={{ fontSize: 11 }}>Good</span>
-                        </div>
                     </div>
                     <div className="card__content">
-                        Người tạo:<span> Admin</span>
+                        Người tạo:<span> {props.item.personAt}</span>
                     </div>
                     <div className="card__content">
-                        Ngày tạo:<span>12/12/2020</span>
+                        Ngày tạo:<span>{props.item.createAt}</span>
                     </div>
 
                     <div className="card__footer">

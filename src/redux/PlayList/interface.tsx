@@ -9,4 +9,6 @@ export interface IPlayList {
     topic: string[]
     published: boolean
     listRecord: IRecordStore[]
+    createAt: string
+    personAt: string
 }

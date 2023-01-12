@@ -1,0 +1,41 @@
+.detail__authorized__page {
+
+
+
+    .list_actions {
+        margin-bottom: 20px;
+        display: flex;
+        margin-top: 20px;
+        gap: 300px;
+
+        .select_item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .select_name {
+                font-weight: 600;
+                font-size: 13px;
+                color: #FFFFFF;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .list_tag_time {
+        display: flex;
+        text-align: center;
+        gap: 8px;
+        align-items: center;
+        font-size: 12px;
+        margin-right: 6px;
+    }
+
+    .tag__cicrle {
+
+        width: 8px;
+        height: 8px;
+        background-color: #347AFF;
+        border-radius: 50%;
+    }
+}

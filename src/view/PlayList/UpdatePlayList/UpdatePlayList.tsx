@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import './__addPlayList.scss';
+
 import { UploadOutlined } from '@ant-design/icons';
 import { Col, Input, Row, Select, Switch, Table, UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
 import TextArea from "antd/es/input/TextArea";
 import { ColumnsType } from "antd/es/table";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../shared/hook/reduxhook";
 import music from '../../../shared/images/music.png'
 import { off } from "process";
@@ -52,7 +52,7 @@ const columns: ColumnsType<DataType> = [
 ];
 
 
-const AddPlayList = () => {
+const UpdatePlayList = () => {
     const navigate = useNavigate()
     let presentDate = new Date();
     let time = moment(presentDate).format('DD/MM/YYYY')
@@ -62,6 +62,14 @@ const AddPlayList = () => {
     const [image, setImage] = useState('')
     const filteredOptions = OPTIONS.filter(o => !selectedItems.includes(o));
     const records__added = useAppSelector(state => state.playlist.Record__Added)
+
+    const { id } = useParams()
+    const playlists: Array<any> | undefined = useAppSelector((state) => {
+        return state.playlist.PlayLists
+    });
+    const playlist = playlists?.find((value) => value.id == id);
+
+
     let dataRecord: DataType[] | any;
     const [formData, setFormData] = useState<IPlayList>({
         image: '',
@@ -76,7 +84,7 @@ const AddPlayList = () => {
         personAt: 'Diep Le',
     })
 
-    dataRecord = records__added.map((item, index) => {
+    dataRecord = playlist.listRecord.map((item: any, index: any) => {
         return {
             id: item?.id,
             Name: item?.Name,
@@ -143,7 +151,7 @@ const AddPlayList = () => {
                 <div className="info__add__playlist">
                     <div className="add__playlist">
                         <div className="add__name">Ảnh bìa :<span style={{ color: 'red', marginBottom: 10 }}>*</span></div>
-                        {image ? <img src={image} className="img__add" alt="" /> : <></>}
+                        {playlist.image ? <img src={playlist.image} className="img__add" alt="" /> : <></>}
 
                         <input type="file" className="add_image" id="customFile" onChange={handleChange} />
                         {/* <Upload
@@ -165,13 +173,13 @@ const AddPlayList = () => {
                     </div>
                     <div className="add__playlist">
                         <div className="add__name">Tiêu đề :<span style={{ color: 'red' }}>*</span></div>
-                        <Input defaultValue='' onChange={(event => setFormData((prev) => ({ ...prev, namePlayList: event.target.value })))} />
+                        <Input defaultValue={playlist.namePlayList} onChange={(event => setFormData((prev) => ({ ...prev, namePlayList: event.target.value })))} />
                     </div>
                     <div className="add__playlist">
 
                         <Row style={{ marginTop: 10 }}>
                             <Col span={15}>Tổng số:</Col>
-                            <Col span={9} className="info__value">0 bản ghi</Col>
+                            <Col span={9} className="info__value">{playlist.listRecord.length} bản ghi</Col>
                         </Row>
                         <Row style={{ marginTop: 10 }}>
                             <Col span={15}>Tổng thời lượng:</Col>
@@ -180,7 +188,7 @@ const AddPlayList = () => {
                     </div>
                     <div className="add__playlist">
                         <div className="add__name">Mô tả :<span style={{ color: 'red' }}>*</span></div>
-                        <TextArea rows={4} onChange={(event => setFormData((prev) => ({ ...prev, description: event.target.value })))} />
+                        <TextArea rows={4} defaultValue={playlist.description} onChange={(event => setFormData((prev) => ({ ...prev, description: event.target.value })))} />
                     </div>
                     <div className="add__playlist" style={{ border: 'none' }}>
                         <div className="add__name">Chủ đề :<span style={{ color: 'red' }}>*</span></div>
@@ -188,7 +196,8 @@ const AddPlayList = () => {
                             className="add__service"
                             mode="multiple"
                             placeholder='Nhập dịch vụ sử dụng'
-                            value={selectedItems}
+                            defaultValue={playlist.topic}
+
                             onChange={setSelectedItems}
                             options={filteredOptions.map(item => ({
                                 value: item,
@@ -199,6 +208,8 @@ const AddPlayList = () => {
                         <div className="" style={{ display: 'flex', gap: 10, marginTop: 10 }}>
 
                             <Switch defaultChecked
+                                checked={playlist.published}
+
                                 onChange={(event => setFormData((prev) => ({ ...prev, published: event })))}
                             /> <div className="add__name" style={{ marginTop: 5 }}>Chế độ công khai </div>
                         </div>
@@ -234,5 +245,5 @@ const AddPlayList = () => {
     )
 }
 
-export default AddPlayList
+export default UpdatePlayList
 
