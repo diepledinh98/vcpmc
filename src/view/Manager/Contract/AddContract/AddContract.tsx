@@ -1,10 +1,66 @@
 import { Button, Col, DatePicker, Form, Input, Radio, Row } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import React from "react";
+import moment from "moment";
+import React, { useState } from "react";
 import { BsExclamationCircle } from "react-icons/bs";
 import { VscCalendar } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
+import { IContractAuthorized } from "../../../../redux/ContractAuthorized/interface";
+import { createContractAuthorized } from "../../../../redux/ContractAuthorized/repository";
+import { useAppDispatch } from "../../../../shared/hook/reduxhook";
 import './AddContract.scss'
 const AddContract = () => {
+    const naviagte = useNavigate()
+    const dispatch = useAppDispatch()
+    const [date, setDate] = useState('')
+    const [formData, setFormData] = useState({
+        NumberContract: "",
+        NameContract: "",
+        DayEffect: "",
+        DayExpire: "",
+        legalAuthorized: "",
+        NamePersonAuthorized: "",
+        sex: "",
+        Birthday: "",
+        nationality: "",
+        phone: "",
+        CMND: "",
+        DayProviderCMND: "",
+        PlaceProviderCMND: "",
+        TaxCode: "",
+        Place: "",
+        Email: "",
+        username: "",
+        password: "",
+        NumberAccount: "",
+        NameBank: "",
+    });
+
+    const HandleSaveContract = () => {
+
+        const body: IContractAuthorized = formData
+        dispatch(createContractAuthorized(body))
+        naviagte('/manager/contract')
+    }
+    // const handleChange = (event: any) => {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //         if (reader.readyState === 2) {
+    //             if (reader.result) {
+    //                 let data = reader.result.toString()
+    //                 setImage(reader.result.toString())
+    //                 setFormData((prev) => ({
+    //                     ...prev,
+    //                     image: data
+
+    //                 }))
+
+    //             }
+
+    //         }
+    //     }
+    //     reader.readAsDataURL(event.target.files[0])
+    // }
     return (
         <div className="add__contract__page">
             <div className="title__page">Thêm hợp đồng ủy quyền mới</div>
@@ -26,14 +82,14 @@ const AddContract = () => {
                                 name="numberContract"
                                 rules={[{ required: true, message: 'Vui lòng nhập số hợp đồng!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, NumberContract: event.target.value })))} />
                             </Form.Item>
                             <Form.Item
                                 label="Tên hợp đồng"
                                 name="nameContract"
                                 rules={[{ required: true, message: 'Vui lòng nhập tên hợp đồng!!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, NameContract: event.target.value })))} />
                             </Form.Item>
                             <Form.Item
                                 label="Ngày hiệu lực"
@@ -41,7 +97,9 @@ const AddContract = () => {
                                 rules={[{ required: true, message: 'Vui lòng chọn ngày hiệu lực!' }]}
                             >
 
-                                <DatePicker suffixIcon={<VscCalendar />} />
+                                <DatePicker suffixIcon={<VscCalendar />}
+                                    onChange={(date: any) => setFormData((prev) => ({ ...prev, DayEffect: moment(date).format('DD/MM/YYYY') }))}
+                                />
                             </Form.Item>
 
                             <Form.Item
@@ -50,7 +108,9 @@ const AddContract = () => {
                                 rules={[{ required: true, message: 'Vui lòng chọn ngày hết hạn!' }]}
                             >
 
-                                <DatePicker suffixIcon={<VscCalendar />} />
+                                <DatePicker suffixIcon={<VscCalendar />}
+                                    onChange={(date: any) => setFormData((prev) => ({ ...prev, DayExpire: moment(date).format('DD/MM/YYYY') }))}
+                                />
                             </Form.Item>
                         </Col>
 
@@ -97,9 +157,9 @@ const AddContract = () => {
                                 name="radio"
                                 rules={[{ required: true, message: 'Vui lòng chọn pháp nhân ủy quyền!' }]}
                             >
-                                <Radio.Group value={1} style={{ marginLeft: 30 }}>
-                                    <Radio value={1}>Cá nhân</Radio>
-                                    <Radio value={2}>Tổ chức</Radio>
+                                <Radio.Group value="" style={{ marginLeft: 30 }} onChange={(event => setFormData((prev) => ({ ...prev, legalAuthorized: event.target.value })))}>
+                                    <Radio value="Cá nhân">Cá nhân</Radio>
+                                    <Radio value="Tổ chức">Tổ chức</Radio>
 
                                 </Radio.Group>
 
@@ -110,7 +170,7 @@ const AddContract = () => {
                                 name="name__authorize"
                                 rules={[{ required: true, message: 'Vui lòng nhập tên người ủy quyền!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, NamePersonAuthorized: event.target.value })))} />
 
                             </Form.Item>
 
@@ -119,9 +179,9 @@ const AddContract = () => {
                                 name="sex"
                                 rules={[{ required: true, message: 'Vui lòng chọn giới tính!' }]}
                             >
-                                <Radio.Group value={1} style={{ marginLeft: 30 }}>
-                                    <Radio value={1}>Nam</Radio>
-                                    <Radio value={2}>Nữ</Radio>
+                                <Radio.Group value="" style={{ marginLeft: 30 }} onChange={(event => setFormData((prev) => ({ ...prev, sex: event.target.value })))}>
+                                    <Radio value="Nam">Nam</Radio>
+                                    <Radio value="Nữ">Nữ</Radio>
 
                                 </Radio.Group>
 
@@ -133,7 +193,9 @@ const AddContract = () => {
                                 rules={[{ required: true, message: 'Vui lòng chọn ngày sinh!' }]}
                             >
 
-                                <DatePicker suffixIcon={<VscCalendar />} />
+                                <DatePicker suffixIcon={<VscCalendar />}
+                                    onChange={(date: any) => setFormData((prev) => ({ ...prev, Birthday: moment(date).format('DD/MM/YYYY') }))}
+                                />
                             </Form.Item>
 
                             <Form.Item
@@ -141,7 +203,7 @@ const AddContract = () => {
                                 name="national"
                                 rules={[{ required: true, message: 'Vui lòng nhập quốc tịch!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, nationality: event.target.value })))} />
 
                             </Form.Item>
                             <Form.Item
@@ -149,7 +211,7 @@ const AddContract = () => {
                                 name="phone"
                                 rules={[{ required: true, message: 'Vui lòng nhập số điện thoại!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, phone: event.target.value })))} />
 
                             </Form.Item>
                         </Col>
@@ -159,7 +221,7 @@ const AddContract = () => {
                                 name="cmnd"
                                 rules={[{ required: true, message: 'Vui lòng nhập CMND/CCCD!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, CMND: event.target.value })))} />
 
                             </Form.Item>
 
@@ -169,7 +231,9 @@ const AddContract = () => {
                                 rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
                             >
 
-                                <DatePicker suffixIcon={<VscCalendar />} />
+                                <DatePicker suffixIcon={<VscCalendar />}
+                                    onChange={(date: any) => setFormData((prev) => ({ ...prev, DayProviderCMND: moment(date).format('DD/MM/YYYY') }))}
+                                />
                             </Form.Item>
 
                             <Form.Item
@@ -177,7 +241,7 @@ const AddContract = () => {
                                 name="where"
                                 rules={[{ required: true, message: 'Vui lòng nhập nơi cấp!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, PlaceProviderCMND: event.target.value })))} />
 
                             </Form.Item>
                             <Form.Item
@@ -185,7 +249,7 @@ const AddContract = () => {
                                 name="taxcode"
                                 rules={[{ required: true, message: 'Vui lòng nhập mã số thuế!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, TaxCode: event.target.value })))} />
 
                             </Form.Item>
 
@@ -194,7 +258,7 @@ const AddContract = () => {
                                 name="place"
                                 rules={[{ required: true, message: 'Vui lòng nhập mã nơi cư chú!' }]}
                             >
-                                <TextArea rows={4} style={{ height: 90 }} />
+                                <TextArea rows={4} style={{ height: 90 }} onChange={(event => setFormData((prev) => ({ ...prev, Place: event.target.value })))} />
 
                             </Form.Item>
                         </Col>
@@ -205,7 +269,7 @@ const AddContract = () => {
                                 name="email"
                                 rules={[{ required: true, message: 'Vui lòng nhập Email!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, Email: event.target.value })))} />
 
                             </Form.Item>
                             <Form.Item
@@ -213,7 +277,7 @@ const AddContract = () => {
                                 name="username"
                                 rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, username: event.target.value })))} />
 
                             </Form.Item>
                             <Form.Item
@@ -221,7 +285,7 @@ const AddContract = () => {
                                 name="password"
                                 rules={[{ required: true, message: 'Vui lòng nhập nhập khẩu!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, password: event.target.value })))} />
 
                             </Form.Item>
                             <Form.Item
@@ -229,7 +293,7 @@ const AddContract = () => {
                                 name="account"
                                 rules={[{ required: true, message: 'Vui lòng nhập số tài khoản!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, NumberAccount: event.target.value })))} />
 
                             </Form.Item>
                             <Form.Item
@@ -237,7 +301,7 @@ const AddContract = () => {
                                 name="bank"
                                 rules={[{ required: true, message: 'Vui lòng nhập tên ngân hàng!' }]}
                             >
-                                <Input />
+                                <Input onChange={(event => setFormData((prev) => ({ ...prev, NameBank: event.target.value })))} />
 
                             </Form.Item>
                         </Col>
@@ -250,7 +314,7 @@ const AddContract = () => {
                             <Button className='btn__cancel' >
                                 Hủy
                             </Button>
-                            <Button htmlType="submit" className='btn__save'>
+                            <Button htmlType="submit" className='btn__save' onClick={HandleSaveContract}>
                                 Lưu
                             </Button>
                         </div>

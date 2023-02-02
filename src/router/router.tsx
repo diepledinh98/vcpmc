@@ -5,13 +5,18 @@ import UpdateProfile from "../view/Auth/UpdateProfile/UpdateProfile";
 import BroadcastSchedule from "../view/BroadcastSchedule/BroadcastSchedule";
 import Help from "../view/Help/Help";
 import Authorization from "../view/Manager/Authorization/Authorization";
+import UpdateAuthorization from "../view/Manager/Authorization/Update/UpdateAuthorization";
 import AddContract from "../view/Manager/Contract/AddContract/AddContract";
 import AddContractMining from "../view/Manager/Contract/AddContractMining/AddContractMining";
 import Contract from "../view/Manager/Contract/Contract";
 import DetailAuthorizeContract from "../view/Manager/Contract/DetailContract/DetailAuthorizeContract/DetailAuthorizeContract";
 import Device from "../view/Manager/Device/Device";
 import Manager from "../view/Manager/Manger";
+import AddUser from "../view/Manager/UnitUsed/AddUser/AddUser";
+import DetailUnit from "../view/Manager/UnitUsed/DetailUnit/DetailUnit";
+import DetailUser from "../view/Manager/UnitUsed/DetailUser/DetailUser";
 import UnitUsed from "../view/Manager/UnitUsed/UnitUsed";
+import UpdateUser from "../view/Manager/UnitUsed/UpdateUser/UpdateUser";
 import AddPlayList from "../view/PlayList/AddPlayList/AddPlayList";
 import AddRecord from "../view/PlayList/AddRecord/AddRecord";
 import DetailPlayList from "../view/PlayList/DetailPlayList/DetailPlayList";
@@ -38,9 +43,14 @@ export const privateRoutes: routeType[] = [
     { path: '/manager/contract', component: <Contract /> },
     { path: '/manager/contract/add-contract', component: <AddContract /> },
     { path: '/manager/contract/add-contract-mining', component: <AddContractMining /> },
-    { path: '/manager/contract/detail-authorized-contract', component: <DetailAuthorizeContract /> },
+    { path: '/manager/contract/detail-authorized-contract/:id', component: <DetailAuthorizeContract /> },
     { path: '/manager/device', component: <Device /> },
     { path: '/manager/Authorization-unit', component: <Authorization /> },
+    { path: '/manager/Authorization-unit/update-authorization-unit/:id', component: <UpdateAuthorization /> },
+    { path: '/manager/Unit-used/detail-unit/:id', component: <DetailUnit /> },
+    { path: '/manager/Unit-used/detail-unit/add-user', component: <AddUser /> },
+    { path: '/manager/Unit-used/detail-user/:id', component: <DetailUser /> },
+    { path: '/manager/Unit-used/detail-user/update-user/:id', component: <UpdateUser /> },
     { path: '/manager/Unit-used', component: <UnitUsed /> },
     { path: '/revenue', component: <Revenue /> },
     { path: '/setting', component: <Setting /> },

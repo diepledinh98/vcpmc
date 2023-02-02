@@ -13,6 +13,7 @@ import ListenComponent from '../../../shared/components/ListenComponent/ListenCo
 interface DataType {
     STT?: string
     id?: string
+    key?: number
     Name: string
     ISRC: string
     time: string
@@ -31,7 +32,17 @@ interface DataType {
 
 }
 
-
+interface DataTableType {
+    id?: string
+    key?: number
+    Name: string
+    ISRC: string
+    time: string
+    singer: string
+    image: string
+    video: string
+    author: string
+}
 
 const TableComponent = () => {
     const dispatch = useAppDispatch()
@@ -42,6 +53,24 @@ const TableComponent = () => {
         setOnVideo(video)
         setIsOpen(true)
     }
+
+
+    let dataRecord: DataTableType[] | any;
+    dataRecord = ListRecord.map((record, index) => {
+        return {
+            id: record.id,
+            key: index + 1,
+            Name: record.Name,
+            ISRC: record.ISRC,
+            time: record.time,
+            singer: record.singer,
+            image: record.image,
+            video: record.video,
+            author: record.author,
+            category: record.category,
+            format: record.format
+        }
+    })
     const columns: ColumnsType<DataType> = [
         {
             title: 'STT',
@@ -133,9 +162,17 @@ const TableComponent = () => {
     useEffect(() => {
         dispatch(fetchRecords())
     }, [dispatch])
+
+    const [rowkey, setRowkey] = useState(['1'])
     return (
         <div className='Table__list'>
-            <Table columns={columns} dataSource={ListRecord} />
+            <Table
+                columns={columns}
+                dataSource={dataRecord}
+                rowSelection={{
+                    type: 'checkbox'
+                }}
+            />
 
             <ListenComponent onIsOpen={isOpen} setIsOpen={setIsOpen} onVideo={onVideo} />
         </div>

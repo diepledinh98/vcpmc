@@ -1,5 +1,5 @@
 import React from "react";
-import './UnitUsed.scss'
+
 import { Input, Switch, Table } from 'antd';
 import { ColumnsType } from "antd/es/table";
 import { Link } from "react-router-dom";
@@ -9,13 +9,13 @@ const { Search } = Input;
 interface DataType {
     id?: string
     key?: number
-    NameConpany: string
-    NumberContract: string
-    Admin: string
-    NumberCustomer: number
-    device: number
-    expire: string
+    NameCustomer: string
+    role: string
+    email: string
+    username: string
+    lastupdate: string
     status: string
+
 
 }
 
@@ -28,35 +28,30 @@ const columns: ColumnsType<DataType> = [
 
     },
     {
-        title: 'Tên tài khoản quản trị',
-        dataIndex: 'NameConpany',
-        key: 'NameConpany',
+        title: 'Tên người dùng',
+        dataIndex: 'NameCustomer',
+        key: 'NameCustomer',
     },
     {
-        title: 'Số hợp đông',
-        dataIndex: 'NumberContract',
-        key: 'NumberContract',
+        title: 'Vai trò',
+        dataIndex: 'role',
+        key: 'role',
     },
     {
-        title: 'Admin',
-        key: 'Admin',
-        dataIndex: 'Admin',
+        title: 'Email',
+        key: 'email',
+        dataIndex: 'email',
 
     },
     {
-        title: 'Người dùng',
-        key: 'NumberCustomer',
-        dataIndex: 'NumberCustomer'
+        title: 'Tên đăng nhập',
+        key: 'username',
+        dataIndex: 'username'
     },
     {
-        title: 'Thiết bị chỉ định',
-        key: 'device',
-        dataIndex: 'device'
-    },
-    {
-        title: 'Ngày hết hạn',
-        key: 'expire',
-        dataIndex: 'expire'
+        title: 'cập nhật lần cuối',
+        key: 'lastupdate',
+        dataIndex: 'lastupdate'
     },
     {
         title: 'Trạng thái',
@@ -80,7 +75,7 @@ const columns: ColumnsType<DataType> = [
 
 
             return (
-                <Link to={`/manager/Unit-used/detail-unit/${id}}`} style={{ color: '#FF7506', textDecoration: 'underline' }}>Xem chi tiết</Link>
+                <Link to={`/manager/Unit-used/detail-user/${id}}`} style={{ color: '#FF7506', textDecoration: 'underline' }}>Xem chi tiết</Link>
             )
         }
     }
@@ -90,30 +85,28 @@ const data: DataType[] = [
     {
         id: 'fdfskjfdijsifjds',
         key: 1,
-        NameConpany: "Cty TNHH TM DV ABCEFG",
-        NumberContract: "HD123",
-        Admin: "Admin 1",
-        NumberCustomer: 21,
-        device: 15,
-        expire: "21/04/2021",
+        NameCustomer: "Nguyen Van A",
+        role: "QC",
+        email: "nguyenvana@gmail.com",
+        username: "nguyenvana",
+        lastupdate: "21/04/2021",
         status: "Đang kích hoạt"
     },
     {
         id: 'fdfskjfdijsifjds',
         key: 2,
-        NameConpany: "Cty TNHH TM DV ABCEFG",
-        NumberContract: "HD123",
-        Admin: "Admin 1",
-        NumberCustomer: 21,
-        device: 15,
-        expire: "21/04/2021",
+        NameCustomer: "Nguyen Van A",
+        role: "QC",
+        email: "nguyenvana@gmail.com",
+        username: "nguyenvana",
+        lastupdate: "21/04/2021",
         status: "Đang kích hoạt"
     }
 ]
-const UnitUsed = () => {
+const DetailUnit = () => {
     return (
         <div className="unitused__page">
-            <div className="title__page">Danh sách đơn vị sử dụng</div>
+            <div className="title__page">Đơn vị sử dụng ABCD</div>
             <div className="action__playlist">
                 <Search placeholder="Tên bản ghi,ca sĩ..." style={{ width: 368 }} />
             </div>
@@ -130,7 +123,13 @@ const UnitUsed = () => {
 
 
                 </div>
-                <div className='profile__action'>
+                <div className='profile__action' style={{ height: 290 }}>
+                    <Link to='/manager/Unit-used/detail-unit/add-user' className='action_edit'>
+                        <div className='icon_action_profile' >
+                            <FiEdit />
+                        </div>
+                        Thêm người dùng
+                    </Link>
                     <Link to='/edit-profile' className='action_edit'>
                         <div className='icon_action_profile' >
                             <FiEdit />
@@ -141,17 +140,13 @@ const UnitUsed = () => {
                         <div className='icon_action_profile' >
                             <FiEdit />
                         </div>
-                        Xóa
-                    </Link> <Link to='/edit-profile' className='action_edit'>
-                        <div className='icon_action_profile' >
-                            <FiEdit />
-                        </div>
-                        Xóa
+                        Vai trò
                     </Link>
+
                 </div>
             </div>
         </div>
     )
 }
 
-export default UnitUsed
+export default DetailUnit

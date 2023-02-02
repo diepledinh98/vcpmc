@@ -1,9 +1,10 @@
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import SearchConponent from '../../../../../shared/components/SearchComponent/SearchComponent'
+import { useAppDispatch, useAppSelector } from '../../../../../shared/hook/reduxhook'
 interface DataType {
     id?: string
     NumberContract: string
@@ -98,6 +99,23 @@ const columns: ColumnsType<DataType> = [
     },
 ];
 const MiningContract = () => {
+    const dispatch = useAppDispatch()
+    const contractMinings = useAppSelector((state) => state.contractMining.ContractMinings)
+    let dataRecord: DataType[] | any;
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [onVideo, setOnVideo] = useState('')
+    dataRecord = contractMinings.map((item, index) => {
+        return {
+            id: item.id,
+            NumberContract: item.NameContract,
+            Customer: item.NameUnitUse,
+            expirationDate: item.DayExpire,
+            createAtEffect: item.DayEffect,
+            createAt: item.DayEffect,
+            EffectContract: "Còn hiệu lực"
+
+        }
+    })
     return (
         <div className='authorize__contract__page'>
 
@@ -108,16 +126,7 @@ const MiningContract = () => {
             </div>
             <div className='content'>
                 <div className='content__table'>
-                    <Table columns={columns} dataSource={[
-                        {
-                            NumberContract: "HD123",
-                            Customer: "Công ty ABC",
-                            expirationDate: "02/12/2022",
-                            createAtEffect: "02/12/2021",
-                            createAt: "01/04/2021 15:53:13",
-                            EffectContract: "new"
-                        }
-                    ]} />
+                    <Table columns={columns} dataSource={dataRecord} />
                 </div>
 
                 <Link to="/manager/contract/add-contract-mining" className="actions__add__record">

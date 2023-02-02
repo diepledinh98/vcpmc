@@ -14,7 +14,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/Store';
 // import { saveUser } from './redux/Auth/AuthSlice';
 import { useAppDispatch } from './shared/hook/reduxhook';
-import { saveUser } from './redux/Auth/AuthSlice';
 function App() {
   const dispatch = useAppDispatch()
   const [IsUser, setIsUser] = useState(false)
@@ -24,7 +23,7 @@ function App() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setIsUser(true)
-      dispatch(saveUser(user))
+
     } else {
       setIsUser(false)
     }
@@ -33,7 +32,7 @@ function App() {
     <div className='App'>
 
       <Routes>
-        {userCurrent.isLogin ? privateRoutes.map((route, index) => {
+        {IsUser ? privateRoutes.map((route, index) => {
           const Page = route.component;
           let Layout = DefaultLayout;
           return (

@@ -6,9 +6,9 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
-    // .ant-menu>.ant-menu-item:hover,
-    // .ant-menu>.ant-menu-submenu:hover,
-    // .ant-menu>.ant-menu-item-active,
+    .ant-menu>.ant-menu-item:hover,
+    .ant-menu>.ant-menu-submenu:hover,
+    .ant-menu>.ant-menu-item-active,
     .ant-menu>.ant-menu-submenu-active,
     .ant-menu>.ant-menu-item-open,
     .ant-menu>.ant-menu-submenu-open,
@@ -16,7 +16,15 @@
     .ant-menu>.ant-menu-submenu-selected {
         background-color: #020220 !important;
         position: relative;
-        color: #FF7506;
+        color: #FF7506 !important;
+
+        svg {
+            color: #FF7506 !important;
+        }
+
+        .ant-menu-submenu-title {
+            color: #FF7506 !important;
+        }
 
         &::before {
             content: '';
@@ -28,7 +36,12 @@
             left: 0;
 
         }
+
+
     }
+
+
+
 
 
 
