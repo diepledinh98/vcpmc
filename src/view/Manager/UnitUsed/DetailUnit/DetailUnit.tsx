@@ -2,8 +2,9 @@ import React from "react";
 
 import { Input, Switch, Table } from 'antd';
 import { ColumnsType } from "antd/es/table";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
+import { useAppSelector } from "../../../../shared/hook/reduxhook";
 const { Search } = Input;
 
 interface DataType {
@@ -81,29 +82,28 @@ const columns: ColumnsType<DataType> = [
     }
 ];
 
-const data: DataType[] = [
-    {
-        id: 'fdfskjfdijsifjds',
-        key: 1,
-        NameCustomer: "Nguyen Van A",
-        role: "QC",
-        email: "nguyenvana@gmail.com",
-        username: "nguyenvana",
-        lastupdate: "21/04/2021",
-        status: "Đang kích hoạt"
-    },
-    {
-        id: 'fdfskjfdijsifjds',
-        key: 2,
-        NameCustomer: "Nguyen Van A",
-        role: "QC",
-        email: "nguyenvana@gmail.com",
-        username: "nguyenvana",
-        lastupdate: "21/04/2021",
-        status: "Đang kích hoạt"
-    }
-]
+
 const DetailUnit = () => {
+
+    const { id } = useParams()
+    const ContractMinings: Array<any> | undefined = useAppSelector((state) => {
+        return state.contractMining.ContractMinings
+    });
+    const ContractMining = ContractMinings?.find((value) => value.id == id);
+    let dataRecord: DataType[] | any;
+
+    dataRecord = ContractMining?.ListUnit.map((item: any) => {
+        return {
+            id: item.id,
+            key: indexedDB,
+            NameCustomer: item.Name,
+            role: item.role,
+            email: item.email,
+            username: item.username,
+            lastupdate: "02/02/2021",
+            status: "Còn thời hạn"
+        }
+    })
     return (
         <div className="unitused__page">
             <div className="title__page">Đơn vị sử dụng ABCD</div>
@@ -115,7 +115,7 @@ const DetailUnit = () => {
                 <div className='Table__list' style={{ marginTop: 30 }}>
                     <Table
                         columns={columns}
-                        dataSource={data}
+                        dataSource={dataRecord}
                         rowSelection={{
                             type: 'checkbox'
                         }}
@@ -124,7 +124,7 @@ const DetailUnit = () => {
 
                 </div>
                 <div className='profile__action' style={{ height: 290 }}>
-                    <Link to='/manager/Unit-used/detail-unit/add-user' className='action_edit'>
+                    <Link to={`/manager/Unit-used/detail-unit/add-user/${id}`} className='action_edit'>
                         <div className='icon_action_profile' >
                             <FiEdit />
                         </div>

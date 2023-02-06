@@ -40,8 +40,8 @@ const items: MenuItem[] = [
         getItem('Đơn vị sử dụng', '/manager/Unit-used'),
     ]),
     getItem('Doanh thu', '/revenue', <TbReportMoney style={{ fontSize: 25, marginTop: 10, marginLeft: 13 }} />, [
-        getItem('Báo cáo doanh thu', '9'),
-        getItem('Lịch sử đối soát', '10'),
+        getItem('Báo cáo doanh thu', '/revenue/report-revenue'),
+        getItem('Lịch sử đối soát', '/revenue/history-revenue'),
         getItem('Phân phối doanh thu', '11'),
 
     ]),

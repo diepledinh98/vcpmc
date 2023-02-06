@@ -10,6 +10,7 @@ import AddContract from "../view/Manager/Contract/AddContract/AddContract";
 import AddContractMining from "../view/Manager/Contract/AddContractMining/AddContractMining";
 import Contract from "../view/Manager/Contract/Contract";
 import DetailAuthorizeContract from "../view/Manager/Contract/DetailContract/DetailAuthorizeContract/DetailAuthorizeContract";
+import Adddvice from "../view/Manager/Device/Adddevice/AddDevice";
 import Device from "../view/Manager/Device/Device";
 import Manager from "../view/Manager/Manger";
 import AddUser from "../view/Manager/UnitUsed/AddUser/AddUser";
@@ -24,6 +25,9 @@ import PlayList from "../view/PlayList/PlayList";
 import UpdatePlayList from "../view/PlayList/UpdatePlayList/UpdatePlayList";
 import RecordStore from "../view/RecordStore/RecordStore";
 import UpdateRecord from "../view/RecordStore/UpdateRecord/UpdateRecord";
+import DetailHisotry from "../view/Revenue/Hisory/DetailHistory/DetailHistory";
+import History from "../view/Revenue/Hisory/History";
+import Report from "../view/Revenue/Report/Report";
 import Revenue from "../view/Revenue/Revenue";
 import Setting from "../view/Setting/Setting";
 
@@ -45,14 +49,18 @@ export const privateRoutes: routeType[] = [
     { path: '/manager/contract/add-contract-mining', component: <AddContractMining /> },
     { path: '/manager/contract/detail-authorized-contract/:id', component: <DetailAuthorizeContract /> },
     { path: '/manager/device', component: <Device /> },
+    { path: '/manager/device/add-device', component: <Adddvice /> },
     { path: '/manager/Authorization-unit', component: <Authorization /> },
     { path: '/manager/Authorization-unit/update-authorization-unit/:id', component: <UpdateAuthorization /> },
     { path: '/manager/Unit-used/detail-unit/:id', component: <DetailUnit /> },
-    { path: '/manager/Unit-used/detail-unit/add-user', component: <AddUser /> },
+    { path: '/manager/Unit-used/detail-unit/add-user/:id', component: <AddUser /> },
     { path: '/manager/Unit-used/detail-user/:id', component: <DetailUser /> },
     { path: '/manager/Unit-used/detail-user/update-user/:id', component: <UpdateUser /> },
     { path: '/manager/Unit-used', component: <UnitUsed /> },
     { path: '/revenue', component: <Revenue /> },
+    { path: '/revenue/report-revenue', component: <Report /> },
+    { path: '/revenue/history-revenue', component: <History /> },
+    { path: '/revenue/history-revenue/detail-revenue/:id', component: <DetailHisotry /> },
     { path: '/setting', component: <Setting /> },
     { path: '/help', component: <Help /> },
     { path: '/edit-record/:id', component: <UpdateRecord /> },
@@ -60,6 +68,7 @@ export const privateRoutes: routeType[] = [
     { path: '/playlist/add-playlist', component: <AddPlayList /> },
     { path: '/playlist/add-playlist/add-record', component: <AddRecord /> },
     { path: '/playlist/edit-playlist/:id', component: <UpdatePlayList /> },
+
 ]
 
 export const publicRoutes: routeType[] = [

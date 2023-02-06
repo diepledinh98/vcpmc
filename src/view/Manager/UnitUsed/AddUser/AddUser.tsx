@@ -1,7 +1,28 @@
 import { Button, Col, Form, Input, Row, Select } from 'antd'
-import React from 'react'
+import { log } from 'console'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './AddUser.scss'
 const AddUser = () => {
+    const { id } = useParams()
+    const [formData, setFormData] = useState({
+        Name: "",
+        username: "",
+        email: "",
+        password: "",
+        role: "",
+        expire: "",
+        phone: "",
+        status: "",
+    });
+
+    const setSelectedItems = (value: string) => {
+        setFormData((prev) => ({ ...prev, role: value }))
+    }
+
+    const handleAddUser = () => {
+
+    }
     return (
         <div className='add__user__page'>
             <div className="title__page">Thêm người dùng</div>
@@ -24,7 +45,7 @@ const AddUser = () => {
                             rules={[{ required: true, message: 'Vui lòng nhập tên người dùng!' }]}
                         >
 
-                            <Input style={{ width: 286 }} />
+                            <Input style={{ width: 286 }} onChange={(event => setFormData((prev) => ({ ...prev, Name: event.target.value })))} />
                         </Form.Item>
 
                         <Form.Item
@@ -32,7 +53,7 @@ const AddUser = () => {
                             name="email"
                             rules={[{ required: true, message: 'Vui lòng nhập Email!!' }]}
                         >
-                            <Input style={{ width: 176 }} />
+                            <Input style={{ width: 176 }} onChange={(event => setFormData((prev) => ({ ...prev, email: event.target.value })))} />
                         </Form.Item>
 
 
@@ -45,7 +66,7 @@ const AddUser = () => {
 
                                 style={{ width: 176, borderColor: '#727288' }}
                                 //   onChange={handleChange}
-
+                                onChange={setSelectedItems}
                                 options={[
                                     {
                                         value: 'QA',
@@ -75,7 +96,7 @@ const AddUser = () => {
                             rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
                         >
 
-                            <Input style={{ width: 286 }} />
+                            <Input style={{ width: 286 }} onChange={(event => setFormData((prev) => ({ ...prev, username: event.target.value })))} />
                         </Form.Item>
 
                         <Form.Item
@@ -83,7 +104,7 @@ const AddUser = () => {
                             name="password"
                             rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
                         >
-                            <Input.Password style={{ width: 286 }} />
+                            <Input.Password style={{ width: 286 }} onChange={(event => setFormData((prev) => ({ ...prev, password: event.target.value })))} />
                         </Form.Item>
                         <Form.Item
                             label="Nhập lại mật khẩu"
@@ -113,7 +134,7 @@ const AddUser = () => {
                         <Button className='btn__cancel'>
                             Hủy
                         </Button>
-                        <Button type="primary" htmlType="submit" className='btn__save'>
+                        <Button type="primary" htmlType="submit" className='btn__save' onClick={handleAddUser}>
                             Lưu
                         </Button>
                     </div>

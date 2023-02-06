@@ -36,6 +36,7 @@ const AddContractMining = () => {
         password: "",
         NumberAccount: "",
         NameBank: "",
+        ListUnit: []
     });
     const handleSave = () => {
         const body: IContractMining = formData

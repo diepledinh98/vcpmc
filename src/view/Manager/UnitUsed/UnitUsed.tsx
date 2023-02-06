@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './UnitUsed.scss'
 import { Input, Switch, Table } from 'antd';
 import { ColumnsType } from "antd/es/table";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
+import { useAppDispatch, useAppSelector } from "../../../shared/hook/reduxhook";
+import { fetchContractMinings } from "../../../redux/ContractMining/repository";
 const { Search } = Input;
 
 interface DataType {
@@ -86,31 +88,28 @@ const columns: ColumnsType<DataType> = [
     }
 ];
 
-const data: DataType[] = [
-    {
-        id: 'fdfskjfdijsifjds',
-        key: 1,
-        NameConpany: "Cty TNHH TM DV ABCEFG",
-        NumberContract: "HD123",
-        Admin: "Admin 1",
-        NumberCustomer: 21,
-        device: 15,
-        expire: "21/04/2021",
-        status: "Đang kích hoạt"
-    },
-    {
-        id: 'fdfskjfdijsifjds',
-        key: 2,
-        NameConpany: "Cty TNHH TM DV ABCEFG",
-        NumberContract: "HD123",
-        Admin: "Admin 1",
-        NumberCustomer: 21,
-        device: 15,
-        expire: "21/04/2021",
-        status: "Đang kích hoạt"
-    }
-]
+
 const UnitUsed = () => {
+    const dispatch = useAppDispatch()
+    const ContractMinings = useAppSelector((state) => state.contractMining.ContractMinings)
+    let dataRecord: DataType[] | any;
+    dataRecord = ContractMinings.map((item, index) => {
+        return {
+            id: item.id,
+            key: index,
+            NameConpany: item.NameUnitUse,
+            NumberContract: item.NameContract,
+            Admin: 'Admin 1',
+            NumberCustomer: 1,
+            device: 2,
+            expire: item.DayExpire,
+            status: 'Đang kích hoạt'
+        }
+    })
+
+    useEffect(() => {
+        dispatch(fetchContractMinings())
+    }, [dispatch])
     return (
         <div className="unitused__page">
             <div className="title__page">Danh sách đơn vị sử dụng</div>
@@ -122,7 +121,7 @@ const UnitUsed = () => {
                 <div className='Table__list' style={{ marginTop: 30 }}>
                     <Table
                         columns={columns}
-                        dataSource={data}
+                        dataSource={dataRecord}
                         rowSelection={{
                             type: 'checkbox'
                         }}
@@ -137,17 +136,7 @@ const UnitUsed = () => {
                         </div>
                         Xóa
                     </Link>
-                    <Link to='/edit-profile' className='action_edit'>
-                        <div className='icon_action_profile' >
-                            <FiEdit />
-                        </div>
-                        Xóa
-                    </Link> <Link to='/edit-profile' className='action_edit'>
-                        <div className='icon_action_profile' >
-                            <FiEdit />
-                        </div>
-                        Xóa
-                    </Link>
+
                 </div>
             </div>
         </div>

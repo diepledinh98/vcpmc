@@ -6,6 +6,7 @@ import { AuthorizationSlice } from './Authorization/AuthorizationSlice';
 import { UnitSlice } from './Unit/UnitSlice';
 import { ContractAuthorizedSlice } from './ContractAuthorized/ContractAuthorizedSlice';
 import { ContractMiningSlice } from './ContractMining/ContractMiningSlice';
+import { DeviceSlice } from './Device/DeviceSlice';
 export const store = configureStore({
     reducer: {
         auth: AuthSlice,
@@ -14,7 +15,8 @@ export const store = configureStore({
         Authorization: AuthorizationSlice.reducer,
         Unit: UnitSlice.reducer,
         ContractAuthorized: ContractAuthorizedSlice.reducer,
-        contractMining: ContractMiningSlice.reducer
+        contractMining: ContractMiningSlice.reducer,
+        Device: DeviceSlice.reducer
     }
 })
 
