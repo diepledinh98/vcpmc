@@ -25,8 +25,11 @@ import PlayList from "../view/PlayList/PlayList";
 import UpdatePlayList from "../view/PlayList/UpdatePlayList/UpdatePlayList";
 import RecordStore from "../view/RecordStore/RecordStore";
 import UpdateRecord from "../view/RecordStore/UpdateRecord/UpdateRecord";
+import Distribute from "../view/Revenue/Distribute/Distribute";
 import DetailHisotry from "../view/Revenue/Hisory/DetailHistory/DetailHistory";
 import History from "../view/Revenue/Hisory/History";
+import DetailReport from "../view/Revenue/Report/DetailReport/DetailReport";
+import DetailRevenue from "../view/Revenue/Report/DetailRevenue/DetailRevenue";
 import Report from "../view/Revenue/Report/Report";
 import Revenue from "../view/Revenue/Revenue";
 import Setting from "../view/Setting/Setting";
@@ -59,8 +62,11 @@ export const privateRoutes: routeType[] = [
     { path: '/manager/Unit-used', component: <UnitUsed /> },
     { path: '/revenue', component: <Revenue /> },
     { path: '/revenue/report-revenue', component: <Report /> },
+    { path: '/revenue/report-revenue/detail-report', component: <DetailReport /> },
+    { path: '/revenue/report-revenue/detail-report/detail-revenue/:id', component: <DetailRevenue /> },
     { path: '/revenue/history-revenue', component: <History /> },
     { path: '/revenue/history-revenue/detail-revenue/:id', component: <DetailHisotry /> },
+    { path: '/revenue/distribute-revenue', component: <Distribute /> },
     { path: '/setting', component: <Setting /> },
     { path: '/help', component: <Help /> },
     { path: '/edit-record/:id', component: <UpdateRecord /> },

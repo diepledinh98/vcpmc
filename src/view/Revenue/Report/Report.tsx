@@ -294,7 +294,7 @@ const Report = () => {
                 </div>
 
                 <div className='profile__action' style={{ height: 110 }}>
-                    <Link to='/manager/device/add-device' className='action_edit'>
+                    <Link to='/revenue/report-revenue/detail-report' className='action_edit'>
                         <div className='icon_action_profile' >
                             <FiEdit />
                         </div>

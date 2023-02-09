@@ -1,0 +1,24 @@
+.detail__report__page {
+    padding-left: 20px;
+
+    .title__Name {
+        font-size: 18px;
+        font-weight: 500;
+        color: #fff;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .action {
+
+        .action__name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        display: flex;
+        gap: 30px;
+    }
+}
